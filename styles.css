@@ -192,6 +192,7 @@ main input {
 	align-content: space-around;
 	background: #eaeaf4;
 	display: flex;	
+	flex-wrap: wrap;
 	grid-area: section;
 	justify-content: space-around;
 	margin-left: 0;
@@ -200,6 +201,12 @@ main input {
 
 .section--idea-card {
 	border: solid #6E646B 2px;
+	font-size: 1.25em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 10px 10px;
+	width: 30%;
 }
 
 .article--idea-header {
@@ -227,8 +234,4 @@ main input {
 	justify-content: space-between;
 	align-items: center;
   height: 30px;
-}
-
-.section--idea-card {
-	width: 200px;
 }
