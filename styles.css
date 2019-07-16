@@ -45,6 +45,11 @@ h2 {
 	width: 90%;
 }
 
+img {
+	width:25px;
+	height: 25px;
+}
+
 button {
 	background: #5356a4;
 	border:	none;
@@ -191,4 +196,39 @@ main input {
 	justify-content: space-around;
 	margin-left: 0;
 	min-height: 15em;
+}
+
+.section--idea-card {
+	border: solid #6E646B 2px;
+}
+
+.article--idea-header {
+	background-color: #1f1f3d;
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.article--idea-content {
+	color: #1F1F3D;
+	padding: 10px;
+}
+
+.h3--idea-header {
+	margin: 5px 0;
+}
+
+
+.article--idea-footer {
+	background-color: #5356A4;
+	color: #fff;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+  height: 30px;
+}
+
+.section--idea-card {
+	width: 200px;
 }
