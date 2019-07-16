@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>IdeaBox</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet"> 
+</head>
+<body>
+	<aside>
+		<section class="section section--main-title">
+			<h1>IdeaBox Redux</h1>
+		</section>
+		<section class="section section--filter-starred">
+			<h2 class="h2 h2--starred-ideas">Filter Starred Ideas</h2>
+			<button class="button button--starred-ideas">Show Starred Ideas</button>
+		</section>
+		<section class="section section--quality-filter">
+			<h2 class="h2 h2--by-quality">Filter by Quality</h2>
+			<ul>
+				<li>Swill</li>
+				<li>Plausible</li>
+				<li>Genius</li>
+			</ul>
+		</section>
+		<section class="section section--new-quality">
+			<form class="form form--new-quality">
+				<label class="label label--new-quality">New Quality</label><br>
+				<input type="text" class="input input--new-quality"><br>
+				<button class="button button--new-quality">Add New Quality</button>
+			</form>
+		</section>
+	</aside>
+	<main>
+		<form class="form form--new-idea">
+			<label class="label label--title">Title</label><br>
+			<input type="text" class="input input--title"><br>
+			<label class="label label--body">Body</label><br>
+			<input type="text" class="input input--body"><br>
+			<button class="button button--save-idea">Save</button><br>
+		</form><br>
+		<form class="form form--search-idea">
+			<input type="text" placeholder="Search ideas" class="input input--search-ideas">
+		</form>
+	</main>
+	<section class="section section--display-ideas">
+		<article class="article article--display-ideas">
+			<p class="p p--temp-text">Try Saving Your First Idea!!</p>
+		</article>
+	</section>
+</body>
+</html>

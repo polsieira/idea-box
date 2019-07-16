@@ -1,0 +1,130 @@
+body {
+	display: grid;
+	grid-template-columns: 10% 10% 20% 20% 20% 20%;
+	grid-template-rows: 30% 23% 1fr 1fr;
+	grid-template-areas: 
+		"aside aside main main main main"
+		"aside aside main main main main"
+		"aside aside section section section section"
+		"aside aside section section section section"
+		"aside aside section section section section";
+	align-items: stretch;
+	justify-items: stretch;
+	margin: 0;
+}
+
+aside {
+	background: #1f1f3d;
+	color: #FFFFFF;
+	display: flex;
+	flex-flow: column;
+	font-family: "Open Sans", sans-serif;
+	grid-area: aside;
+	/*max-width: 26%;*/
+	min-height: 100%;
+	min-width: 20%;
+	position: fixed;
+	margin: 0;
+	place-self: stretch;
+}
+
+h1 {
+	font-size: 19px;
+	font-weight: 700;
+}
+
+h2 {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+button {
+	background: #5356a4;
+	color: #ffffff;
+	min-width: 95%;
+	min-height: 2em;
+	font-size: 23px;
+	font-weight: 400;
+	border:	none;
+	margin: 6% auto;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+li {
+	font-size: 17px;
+	padding-bottom: 2%;
+}
+
+.section--main-title,
+.section--filter-starred,
+.section--quality-filter,
+.section--new-quality {
+	padding: 3% 1% 6% 4%;
+	border-bottom: 1px solid #353567;
+}
+
+.section--quality-filter {
+	border: unset;
+}
+
+.label--new-quality {
+	font-size: 14px;
+}
+
+.input--new-quality {
+	min-width: 92%;
+	min-height: 3em;
+}
+
+main {
+	background: #a9aad2;
+	color: #1f1f3d;
+	grid-area: main;
+	min-height: 100%;
+	min-width: 75%;
+	margin-left: 0;
+	margin-bottom: 14%;
+	margin-top: 0;
+	padding: 20px;
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+
+.label--title {
+	/*padding: 2% 1% 3% 1%;*/
+}
+
+main input {
+	min-width: 55em;
+	min-height: 3em;
+	margin: 2% 0;
+}
+
+.input--body {
+	min-height: 7em;
+}
+
+.button--save-idea {
+	background: #1f1f3d;
+	min-width: 100%;
+}
+
+.input--search-ideas {
+	display: block;
+}
+
+.section--display-ideas {
+	background: #eaeaf4;
+	grid-area: section;
+	min-height: 15em;
+	margin-left: 0;
+	display: flex;	
+	justify-content: space-around;
+	align-content: space-around;
+}
