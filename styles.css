@@ -145,7 +145,7 @@ main {
 	display: flex;
 	flex-flow: column;
 	grid-area: main;
-	margin-bottom: 14%;
+	margin-bottom: 40px;
 	margin-left: 0;
 	margin-top: 0;
 	min-height: 100%;
