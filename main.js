@@ -5,21 +5,30 @@ var ideas = [];
 const titleInput = document.querySelector(".input--title");
 const bodyInput = document.querySelector(".textarea--body");
 const main = document.querySelector('main');
+const cardHolder = document.querySelector('.section--display-ideas');
 
 // Event Listeners
+window.addEventListener('load', populateCards);
 main.addEventListener('click', ideaHandeler);
 
 // Functions
+function populateCards(event) {
+  var ideas = JSON.parse(localStorage.getItem('ideaArray'));
+  console.log(ideas)
+  ideas.forEach(function(element) {
+    buildCard(element)
+    console.log('here')
+  });
+}
+
 function ideaHandeler(event) {
-  console.log('In ideaHandeler')
   event.preventDefault();
   if (event.target.classList.contains('button--save-idea')) {
-    console.log('In conditional')
-    buildCard();
+    populateNewIdea();
   }
 }
 
-function buildCard() {
+function populateNewIdea() {
   var ideaText = {};
   ideaText.id = Date.now();
   ideaText.title = titleInput.value;
@@ -27,7 +36,13 @@ function buildCard() {
   console.log(ideaText)
   var idea = new Idea(ideaText);
   idea.saveToStorage(ideas);
-  insertCard(idea);
+  buildCard(idea);
+}
+
+function buildCard(idea) {
+  cardHolder.insertAdjacentHTML('afterbegin', `
+    ${idea.title}`
+  )
 }
 
 function insertCard(idea) {
