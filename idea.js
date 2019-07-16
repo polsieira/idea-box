@@ -21,7 +21,7 @@ class Idea {
     localStorage.setItem('ideaArray', JSON.stringify(array));
   }
 
-  updateIdea(info, property) {
+  updateIdea(info, property) {     //would be great if we could use the input class or id to know what property to update
     if (property === 'title') {
       this.updateTitle(info);
     }
@@ -45,7 +45,7 @@ class Idea {
     this.body = body;
   }
 
-  updateStar(star) {
-    this.star = star;
+  updateStar() {
+    this.star ^= true;
   }
 }
