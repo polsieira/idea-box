@@ -1,10 +1,10 @@
 class Idea {
-  constructor(id, title, body, star, quality) {
-    this.id = id; //can use id making function or Date.now()
-    this.title = title; //string
-    this.body = body; //string
-    this.star = star || false; //boolean
-    this.quality = quality || 0;  //integer specifying a quality in array
+  constructor(obj) {
+    this.id = obj.id; //can use id making function or Date.now()
+    this.title = obj.title; //string
+    this.body = obj.body; //string
+    this.star = obj.star || false; //boolean
+    this.quality = obj.quality || 0;  //integer specifying a quality in array
   }
 
   saveToStorage(array) {
