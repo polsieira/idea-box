@@ -1,6 +1,6 @@
 body {
 	display: grid;
-	grid-template-columns: 10% 10% 20% 20% 20% 20%;
+	grid-template-columns: 13% 13% 19% 19% 19% 19%;
 	grid-template-rows: 30% 23% 1fr 1fr;
 	grid-template-areas: 
 		"aside aside main main main main"
@@ -22,9 +22,10 @@ aside {
 	grid-area: aside;
 	/*max-width: 26%;*/
 	min-height: 100%;
-	min-width: 20%;
-	position: fixed;
+	min-width: 26%;
+	/*position: fixed;*/
 	margin: 0;
+	align-items: center;
 	place-self: stretch;
 }
 
@@ -47,7 +48,19 @@ button {
 	font-weight: 400;
 	border:	none;
 	margin: 6% auto;
+
 }
+
+button,
+input,
+label {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 400;
+}
+
+
+
+
 
 ul {
 	list-style: none;
@@ -64,8 +77,8 @@ li {
 .section--filter-starred,
 .section--quality-filter,
 .section--new-quality {
-	padding: 3% 1% 6% 4%;
 	border-bottom: 1px solid #353567;
+	width: 90%;
 }
 
 .section--quality-filter {
