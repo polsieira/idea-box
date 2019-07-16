@@ -8,7 +8,12 @@ class Idea {
   }
 
   saveToStorage(array) {
-    array.push(this); 
+    for (var i = array.length - 1; i >= 0; --i) {
+      if (array[i].id === this.id) {
+        array.splice(i,1);
+      }
+    }    
+    array.push(this); //might need to change 
     localStorage.setItem('ideaArray', JSON.stringify(array));
   }
 
