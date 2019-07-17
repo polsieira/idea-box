@@ -2,27 +2,38 @@
 // Global variables
 var qualities = ['Swill','Plausible','Genius'];
 var ideas = [];
-const titleInput = document.querySelector(".input--title");
-const bodyInput = document.querySelector(".textarea--body");
+const titleInput = document.querySelector('.input--title');
+const bodyInput = document.querySelector('.textarea--body');
+const saveButton = document.querySelector('.button--save-idea')
 const main = document.querySelector('main');
 const cardHolder = document.querySelector('.section--display-ideas');
 const editModal = document.querySelector('.div--modal-popup');
 const modal = document.querySelector('.div--modal');
 // Event Listeners
-window.addEventListener('load', populateCards);
+window.addEventListener('load', repopulateCards);
 window.addEventListener('click', hideModal);
 document.addEventListener('keypress', hideModal);
-main.addEventListener('click', ideaHandler);
-cardHolder.addEventListener('click', cardHandler);
+main.addEventListener('keyup', createIdeaHandler);
+main.addEventListener('click', createIdeaHandler);
+cardHolder.addEventListener('click', manageCardHandler);
 cardHolder.addEventListener('click', displayModal);
 
+
 // Functions
-function populateCards(event) {
+function repopulateCards(event) {
+  instantiatePersistedIdeas();
+  rebuildPersistedIdeas();
+}
+
+function instantiatePersistedIdeas() {
   ideasTemp = JSON.parse(localStorage.getItem('ideaArray'));
   ideasTemp.forEach(function(element) {
     element = new Idea(element);
     ideas.push(element);
   })
+}
+
+function rebuildPersistedIdeas() {
   if (ideas !== null) {
     ideas.forEach(function(element) {
     buildCard(element)
@@ -30,45 +41,25 @@ function populateCards(event) {
   }
 }
 
-function ideaHandler(event) {
+function createIdeaHandler(event) {
   event.preventDefault();
+  if (event.target === titleInput || bodyInput) {
+    if (checkFields([titleInput, bodyInput])) {
+      enableButton(saveButton);
+    } else {
+      disableButton(saveButton);
+    }
+  }
   if (event.target.classList.contains('button--save-idea')) {
     populateNewIdea();
   }
 }
 
-function cardHandler(event) {
-  event.preventDefault();
-  if (event.target.id === 'img img--delete-icon') {
-    deleteIdea(event);
-  }
-
-  if (event.target.id === 'img img--star-icon') {
-    toggleStar(event);
-  }
-}
-
-function toggleStar(event) {
-  var card = event.target.parentNode.parentNode;
-  var ideaIndex = locateIdea(card);
-  ideaIndex.updateStar();
-  ideaIndex.saveToStorage(ideas);
-  if(ideaIndex.star === true){
-    event.target.src = 'images/star-active.svg';
-  } else {
-    event.target.src = 'images/star.svg';
-  }
-  
-}
-
 function populateNewIdea() {
-  var ideaText = {};
-  ideaText.id = Date.now();
-  ideaText.title = titleInput.value;
-  ideaText.body = bodyInput.value;
-  var idea = new Idea(ideaText);
-  idea.saveToStorage(ideas);
+  var idea = new Idea({id: Date.now(), title: titleInput.value, body: bodyInput.value});
+  ideas = idea.saveToStorage(ideas);
   buildCard(idea);
+  clearFields([titleInput, bodyInput]);
 }
 
 function buildCard(idea) {
@@ -92,22 +83,30 @@ function buildCard(idea) {
   )
 }
 
+function manageCardHandler(event) {
+  event.preventDefault();
+  if (event.target.id === 'img img--delete-icon') {
+    deleteIdea(event);
+  }
+  if (event.target.id === 'img img--star-icon') {
+    toggleStar(event);
+  }
+}
+
 function deleteIdea(event) {
   var card = event.target.parentNode.parentNode;
   cardHolder.removeChild(card);
   var ideaIndex = locateIdea(card);
-  ideaIndex.deleteFromStorage(ideas);
+  ideas = ideaIndex.deleteFromStorage(ideas);
 }
 
 function locateIdea(card) {
   var index = ideas.findIndex(function(element) {
     return element.id == card.dataset.id
   });
-
   return ideas[index];
 }
 
-// basham functions
 function editCard(event) {
 	// locateIdea(card); isn't firing here.
 	editModal.insertAdjacentHTML('afterbegin', `
@@ -125,8 +124,7 @@ function editCard(event) {
         <p>Quality: Swill</p>
         <img src="images/downvote.svg" alt="downvote icon">
       </article>
-    </section>`
-  ) 
+    </section>`); 
 }
 
 function displayModal(event) {
@@ -142,16 +140,40 @@ function hideModal(event) {
 		modal.style.display = 'none';
 		console.log('click2')
 		//will need to call a function that 1) replaces this card without changing time stamp? 2)pushes back into array/localStorage
-	}
+  }
 }
 
+function toggleStar(event) {
+  var card = event.target.parentNode.parentNode;
+  var ideaIndex = locateIdea(card);
+  ideaIndex.updateStar();
+  ideas = ideaIndex.saveToStorage(ideas);
+  if(ideaIndex.star === true){
+    event.target.src = 'images/star-active.svg';
+  } else {
+    event.target.src = 'images/star.svg';
+  }
+}
 
-function makeid(length) {
-   var result           = '';
-   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-   var charactersLength = characters.length;
-   for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-   }
-   return result;
+function checkFields(fields) {
+  for (i = 0; i < fields.length; i++) {
+    if (fields[i].value === '') {
+      return false;
+    }
+  }
+  return true;
+}
+
+function enableButton(button) {
+  button.disabled = false;
+}
+
+function disableButton(button) {
+  button.disabled = true;
+}
+
+function clearFields(fields) {
+  fields.forEach(function(element) {
+    element.value = "";
+  });
 }

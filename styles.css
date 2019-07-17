@@ -62,6 +62,10 @@ button {
 	width: 100%;
 }
 
+button:disabled {
+	opacity: 0.35;
+}
+
 .button--new-quality,
 .button--starred-ideas {
 	width: 90%;
@@ -262,3 +266,4 @@ main input {
 	width: 60%;
 	height: 600px;
 }
+
