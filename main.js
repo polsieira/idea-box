@@ -71,7 +71,7 @@ function buildCard(idea) {
       </article>
       <article class="article article--idea-footer">
         <img src="images/upvote.svg" alt="upvote icon" data-direction='up' id="img-quality">
-        <p>Quality: Swill</p>
+        <p>Quality: ${qualities[idea.quality]}</p>
         <img src="images/downvote.svg" alt="downvote icon" data-direction='down' id="img-quality">
       </article>
     </section>`
@@ -119,7 +119,7 @@ function changeQuality(event) {
 
 function changeQualityText(event, ideaIndex) {
   console.log(event)
-  event.target.nextSibling.nextSibling.innerText = `Quality: ${qualities[ideaIndex.quality]}`;
+  event.target.parentNode.children[1].innerText = `Quality: ${qualities[ideaIndex.quality]}`;
 }
 
 function locateIdea(card) {
