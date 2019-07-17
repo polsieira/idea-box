@@ -48,7 +48,7 @@ function toggleStar(event) {
   var card = event.target.parentNode.parentNode;
   var ideaIndex = locateIdea(card);
   ideaIndex.updateStar();
-  ideaIndex.saveToStorage(ideas);
+  ideas = ideaIndex.saveToStorage(ideas);
   if(ideaIndex.star === true){
     event.target.src = 'images/star-active.svg';
   } else {
@@ -63,7 +63,7 @@ function populateNewIdea() {
   ideaText.title = titleInput.value;
   ideaText.body = bodyInput.value;
   var idea = new Idea(ideaText);
-  idea.saveToStorage(ideas);
+  ideas = idea.saveToStorage(ideas);
   buildCard(idea);
 }
 
@@ -92,7 +92,7 @@ function deleteIdea(event) {
   var card = event.target.parentNode.parentNode;
   cardHolder.removeChild(card);
   var ideaIndex = locateIdea(card);
-  ideaIndex.deleteFromStorage(ideas);
+  ideas = ideaIndex.deleteFromStorage(ideas);
 }
 
 function locateIdea(card) {
