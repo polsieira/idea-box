@@ -45,6 +45,11 @@ h2 {
 	width: 90%;
 }
 
+img {
+	width:25px;
+	height: 25px;
+}
+
 button {
 	background: #5356a4;
 	border:	none;
@@ -54,6 +59,10 @@ button {
 	margin: 6% auto;
 	height: 2em;
 	width: 100%;
+}
+
+button:disabled {
+	opacity: 0.35;
 }
 
 .button--new-quality,
@@ -145,7 +154,7 @@ main {
 	display: flex;
 	flex-flow: column;
 	grid-area: main;
-	margin-bottom: 14%;
+	margin-bottom: 40px;
 	margin-left: 0;
 	margin-top: 0;
 	min-height: 100%;
@@ -187,8 +196,47 @@ main input {
 	align-content: space-around;
 	background: #eaeaf4;
 	display: flex;	
+	flex-wrap: wrap;
 	grid-area: section;
 	justify-content: space-around;
 	margin-left: 0;
 	min-height: 15em;
 }
+
+.section--idea-card {
+	border: solid #6E646B 2px;
+	font-size: 1.25em;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	margin: 10px 10px;
+	width: 30%;
+}
+
+.article--idea-header {
+	background-color: #1f1f3d;
+	display:flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.article--idea-content {
+	color: #1F1F3D;
+	padding: 10px;
+}
+
+.h3--idea-header {
+	margin: 5px 0;
+}
+
+
+.article--idea-footer {
+	background-color: #5356A4;
+	color: #fff;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+  height: 30px;
+}
+

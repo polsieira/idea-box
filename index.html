@@ -3,6 +3,7 @@
 <head>
 	<title>IdeaBox</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
+	<!-- <link rel="stylesheet" type="text/css" href="normalize.css"> -->
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet"> 
 </head>
 <body>
@@ -37,16 +38,16 @@
 			<label class="label label--body">Body</label><br>
 			<!-- <input type="text" class="input input--body"><br> -->
 			<textarea class="textarea textarea--body"></textarea>
-			<button class="button button--save-idea">Save</button><br>
+			<button disabled type="button" class="button button--save-idea">Save</button><br>
 		</form><br>
 		<form class="form form--search-idea">
 			<input type="text" placeholder="Search ideas" class="input input--search-ideas">
 		</form>
 	</main>
 	<section class="section section--display-ideas">
-		<article class="article article--display-ideas">
-			<p class="p p--temp-text">Try Saving Your First Idea!!</p>
-		</article>
+		
 	</section>
 </body>
+<script type="text/javascript" src="idea.js"></script>
+<script type="text/javascript" src="main.js"></script>
 </html>

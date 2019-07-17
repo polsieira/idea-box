@@ -8,22 +8,16 @@ class Idea {
   }
 
   saveToStorage(array) {
-    for (var i = array.length - 1; i >= 0; --i) {
-      if (array[i].id === this.id) {
-        array.splice(i,1);
-      }
-    }    
-    array.push(this); //might need to change 
+    array = array.filter(element => element.id !== this.id);
+    array.push(this); 
     localStorage.setItem('ideaArray', JSON.stringify(array));
+    return array;
   }
 
   deleteFromStorage(array) {
-    for (var i = array.length - 1; i >= 0; --i) {
-      if (array[i].id === this.id) {
-        array.splice(i,1);
-      }
-    }
+    array = array.filter(element => element.id !== this.id);
     localStorage.setItem('ideaArray', JSON.stringify(array));
+    return array;
   }
 
   updateIdea(info, property) {     //would be great if we could use the input class or id to know what property to update
@@ -51,6 +45,10 @@ class Idea {
   }
 
   updateStar() {
-    this.star ^= true;
+    this.star = !this.star;
   }
 }
+
+
+
+
