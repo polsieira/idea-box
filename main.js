@@ -8,12 +8,12 @@ const main = document.querySelector('main');
 const cardHolder = document.querySelector('.section--display-ideas');
 
 // Event Listeners
-window.addEventListener('load', populateCards);
-main.addEventListener('click', ideaHandler);
-cardHolder.addEventListener('click', cardHandler);
+window.addEventListener('load', repopulateCards);
+main.addEventListener('click', createIdeaHandler);
+cardHolder.addEventListener('click', manageCardHandler);
 
 // Functions
-function populateCards(event) {
+function repopulateCards(event) {
   instantiatePersistedIdeas();
   rebuildPersistedIdeas();
 }
@@ -34,7 +34,7 @@ function rebuildPersistedIdeas() {
   }
 }
 
-function ideaHandler(event) {
+function createIdeaHandler(event) {
   event.preventDefault();
   if (event.target.classList.contains('button--save-idea')) {
     populateNewIdea();
@@ -42,14 +42,10 @@ function ideaHandler(event) {
 }
 
 function populateNewIdea() {
-  var ideaText = {};
-  ideaText.id = Date.now();
-  ideaText.title = titleInput.value;
-  ideaText.body = bodyInput.value;
-  clearFields([titleInput, bodyInput]);
-  var idea = new Idea(ideaText);
+  var idea = new Idea({id: Date.now(), title: titleInput.value, body: bodyInput.value});
   ideas = idea.saveToStorage(ideas);
   buildCard(idea);
+  clearFields([titleInput, bodyInput]);
 }
 
 function buildCard(idea) {
@@ -73,12 +69,11 @@ function buildCard(idea) {
   )
 }
 
-function cardHandler(event) {
+function manageCardHandler(event) {
   event.preventDefault();
   if (event.target.id === 'img img--delete-icon') {
     deleteIdea(event);
   }
-
   if (event.target.id === 'img img--star-icon') {
     toggleStar(event);
   }
@@ -95,7 +90,6 @@ function locateIdea(card) {
   var index = ideas.findIndex(function(element) {
     return element.id == card.dataset.id
   });
-
   return ideas[index];
 }
 
@@ -109,7 +103,6 @@ function toggleStar(event) {
   } else {
     event.target.src = 'images/star.svg';
   }
-  
 }
 
 function clearFields(fields) {
