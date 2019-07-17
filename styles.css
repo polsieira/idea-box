@@ -169,6 +169,13 @@ main input {
 	width: 100%;
 }
 
+#img--star-icon:hover,
+#img--delete-icon:hover,
+#img--upvote:hover,
+#img--downvote:hover {
+	color: #d14119;
+}
+
 .input--title {
 	margin-bottom: 22px;
 	margin-top: 3px;
@@ -238,4 +245,20 @@ main input {
 	justify-content: space-between;
 	align-items: center;
   	height: 30px;
+}
+
+.div--modal {
+	background: rgba(0, 0, 0, 0.5);
+	display: none;	
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.div--modal-popup {
+	margin: 30% auto;
+	width: 60%;
+	height: 600px;
 }
