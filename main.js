@@ -7,12 +7,17 @@ const bodyInput = document.querySelector('.textarea--body');
 const saveButton = document.querySelector('.button--save-idea')
 const main = document.querySelector('main');
 const cardHolder = document.querySelector('.section--display-ideas');
-
+const editModal = document.querySelector('.div--modal-popup');
+const modal = document.querySelector('.div--modal');
 // Event Listeners
 window.addEventListener('load', repopulateCards);
+window.addEventListener('click', hideModal);
+document.addEventListener('keypress', hideModal);
 main.addEventListener('keyup', createIdeaHandler);
 main.addEventListener('click', createIdeaHandler);
 cardHolder.addEventListener('click', manageCardHandler);
+cardHolder.addEventListener('click', displayModal);
+
 
 // Functions
 function repopulateCards(event) {
@@ -67,12 +72,12 @@ function buildCard(idea) {
       </article>
       <article class="article article--idea-content">
         <h3 class="h3 h3--idea-header">${idea.title}</h3>
-        <p>${idea.body}</p>
+        <p class="p p--idea-body">${idea.body}</p>
       </article>
       <article class="article article--idea-footer">
-        <img src="images/upvote.svg" alt="upvote icon">
+        <img id="img img--upvote" src="images/upvote.svg" alt="upvote icon">
         <p>Quality: Swill</p>
-        <img src="images/downvote.svg" alt="downvote icon">
+        <img id="img img--downvote" src="images/downvote.svg" alt="downvote icon">
       </article>
     </section>`
   )
@@ -100,6 +105,42 @@ function locateIdea(card) {
     return element.id == card.dataset.id
   });
   return ideas[index];
+}
+
+function editCard(event) {
+	// locateIdea(card); isn't firing here.
+	editModal.insertAdjacentHTML('afterbegin', `
+    <section class="section section--idea-card" data-id="1563336219774">
+      <article class="article article--idea-header">
+        <img id="img img--star-icon" src= alt="star icon">
+        <img id="img img--delete-icon" src="images/delete.svg" alt="delete icon">
+      </article>
+      <article class="article article--idea-content">
+        <input type="text" value="asdfa">
+        <textarea class="textarea textarea--edit">sdf</textarea>
+      </article>
+      <article class="article article--idea-footer">
+        <img src="images/upvote.svg" alt="upvote icon">
+        <p>Quality: Swill</p>
+        <img src="images/downvote.svg" alt="downvote icon">
+      </article>
+    </section>`); 
+}
+
+function displayModal(event) {
+	if (event.target.classList.contains('h3--idea-header' || 'p--idea-body')) {
+		modal.style.display = 'block';
+		editCard(event);
+	}
+}
+
+function hideModal(event) {
+	if (event.target.id === 'edit-box' || event.key === 'Enter') {
+		console.log('click');
+		modal.style.display = 'none';
+		console.log('click2')
+		//will need to call a function that 1) replaces this card without changing time stamp? 2)pushes back into array/localStorage
+  }
 }
 
 function toggleStar(event) {

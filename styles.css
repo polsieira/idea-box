@@ -8,10 +8,11 @@ body {
 	align-items: stretch;
 	display: grid;
 	grid-template-columns: 150px 150px 19% 19% 19% 19%;
-	grid-template-rows: 30% 23% 1fr 1fr;
+	grid-template-rows: 200px 200px 190px 190px 190px;
 	grid-template-areas: 
 		"aside aside main main main main"
 		"aside aside main main main main"
+		"aside aside section section section section"
 		"aside aside section section section section"
 		"aside aside section section section section"
 		"aside aside section section section section";
@@ -172,6 +173,13 @@ main input {
 	width: 100%;
 }
 
+#img--star-icon:hover,
+#img--delete-icon:hover,
+#img--upvote:hover,
+#img--downvote:hover {
+	color: #d14119;
+}
+
 .input--title {
 	margin-bottom: 22px;
 	margin-top: 3px;
@@ -193,14 +201,17 @@ main input {
 }
 
 .section--display-ideas {
-	align-content: space-around;
+	/*align-content: space-around;*/
 	background: #eaeaf4;
-	display: flex;	
+	display: grid;
+	grid-template-columns: repeat(3, 33%);
+    grid-template-rows: repeat(10, 50%);	
 	flex-wrap: wrap;
 	grid-area: section;
 	justify-content: space-around;
 	margin-left: 0;
-	min-height: 15em;
+	overflow: scroll;
+	/*min-height: 15em;*/
 }
 
 .section--idea-card {
@@ -210,7 +221,7 @@ main input {
 	flex-direction: column;
 	justify-content: space-between;
 	margin: 10px 10px;
-	width: 30%;
+	/*width: 30%;*/
 }
 
 .article--idea-header {
@@ -237,6 +248,22 @@ main input {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-  height: 30px;
+  	height: 30px;
+}
+
+.div--modal {
+	background: rgba(0, 0, 0, 0.5);
+	display: none;	
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+}
+
+.div--modal-popup {
+	margin: 30% auto;
+	width: 60%;
+	height: 600px;
 }
 
