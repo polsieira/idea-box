@@ -18,11 +18,7 @@ class Idea {
   }
 
   deleteFromStorage(array) {
-    for (var i = array.length - 1; i >= 0; --i) {
-      if (array[i].id === this.id) {
-        array.splice(i,1);
-      }
-    }
+    array = array.filter(element => element.id !== this.id);
     localStorage.setItem('ideaArray', JSON.stringify(array));
   }
 
@@ -51,7 +47,7 @@ class Idea {
   }
 
   updateStar() {
-    this.star ^= true;
+    this.star = !this.star;
   }
 }
 
