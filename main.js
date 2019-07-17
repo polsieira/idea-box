@@ -70,9 +70,9 @@ function buildCard(idea) {
         <p>${idea.body}</p>
       </article>
       <article class="article article--idea-footer">
-        <img src="images/upvote.svg" alt="upvote icon">
+        <img src="images/upvote.svg" alt="upvote icon" data-direction='up' id="img-quality">
         <p>Quality: Swill</p>
-        <img src="images/downvote.svg" alt="downvote icon">
+        <img src="images/downvote.svg" alt="downvote icon" data-direction='down' id="img-quality">
       </article>
     </section>`
   )
@@ -86,6 +86,9 @@ function manageCardHandler(event) {
   if (event.target.id === 'img img--star-icon') {
     toggleStar(event);
   }
+  if (event.target.id === 'img-quality') {
+    changeQuality(event);
+  }
 }
 
 function deleteIdea(event) {
@@ -93,13 +96,6 @@ function deleteIdea(event) {
   cardHolder.removeChild(card);
   var ideaIndex = locateIdea(card);
   ideas = ideaIndex.deleteFromStorage(ideas);
-}
-
-function locateIdea(card) {
-  var index = ideas.findIndex(function(element) {
-    return element.id == card.dataset.id
-  });
-  return ideas[index];
 }
 
 function toggleStar(event) {
@@ -112,6 +108,25 @@ function toggleStar(event) {
   } else {
     event.target.src = 'images/star.svg';
   }
+}
+
+function changeQuality(event) {
+  var card = event.target.parentNode.parentNode;
+  var ideaIndex = locateIdea(card);
+  ideas = ideaIndex.updateQuality(event.target.dataset.direction, qualities.length - 1, ideas); 
+  changeQualityText(event, ideaIndex); 
+}
+
+function changeQualityText(event, ideaIndex) {
+  console.log(event)
+  event.target.nextSibling.nextSibling.innerText = `Quality: ${qualities[ideaIndex.quality]}`;
+}
+
+function locateIdea(card) {
+  var index = ideas.findIndex(function(element) {
+    return element.id == card.dataset.id
+  }); 
+  return ideas[index];
 }
 
 function checkFields(fields) {

@@ -32,12 +32,22 @@ class Idea {
     }
   }
 
-  updateQuality(direction) {
+  updateQuality(direction, nQualities, array) {
     if (direction === 'up') {
-      this.quality = this.quality === this.quality.length + 1 ? this.quality.length + 1 : this.quality++;
-    } else if (direction === 'down') {
-      this.quality = this.quality === 0 : 0 : this.quality--;
+      if (this.quality === nQualities) {
+        this.quality =  nQualities;
+      } else {
+        this.quality++;
+      }
+    } else if (direction === 'down') {  
+      if (this.quality === 0) {
+        this.quality = 0;
+      } else {
+        this.quality--;
+      }
     }
+    this.saveToStorage(array);
+    return array;
   }
 
   updateTitle(title) {
