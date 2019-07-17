@@ -62,6 +62,7 @@ function populateNewIdea() {
   ideaText.id = Date.now();
   ideaText.title = titleInput.value;
   ideaText.body = bodyInput.value;
+  clearFields([titleInput, bodyInput]);
   var idea = new Idea(ideaText);
   ideas = idea.saveToStorage(ideas);
   buildCard(idea);
@@ -103,6 +104,11 @@ function locateIdea(card) {
   return ideas[index];
 }
 
+function clearFields(fields) {
+  fields.forEach(function(element) {
+    element.value = "";
+  });
+}
 
 
 
