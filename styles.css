@@ -61,6 +61,10 @@ button {
 	width: 100%;
 }
 
+button:disabled {
+	opacity: 0.35;
+}
+
 .button--new-quality,
 .button--starred-ideas {
 	width: 90%;
@@ -235,3 +239,4 @@ main input {
 	align-items: center;
   height: 30px;
 }
+

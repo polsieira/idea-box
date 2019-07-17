@@ -2,13 +2,15 @@
 // Global variables
 var qualities = ['Swill','Plausible','Genius'];
 var ideas = [];
-const titleInput = document.querySelector(".input--title");
-const bodyInput = document.querySelector(".textarea--body");
+const titleInput = document.querySelector('.input--title');
+const bodyInput = document.querySelector('.textarea--body');
+const saveButton = document.querySelector('.button--save-idea')
 const main = document.querySelector('main');
 const cardHolder = document.querySelector('.section--display-ideas');
 
 // Event Listeners
 window.addEventListener('load', repopulateCards);
+main.addEventListener('keyup', createIdeaHandler);
 main.addEventListener('click', createIdeaHandler);
 cardHolder.addEventListener('click', manageCardHandler);
 
@@ -36,6 +38,13 @@ function rebuildPersistedIdeas() {
 
 function createIdeaHandler(event) {
   event.preventDefault();
+  if (event.target === titleInput || bodyInput) {
+    if (checkFields([titleInput, bodyInput])) {
+      enableButton(saveButton);
+    } else {
+      disableButton(saveButton);
+    }
+  }
   if (event.target.classList.contains('button--save-idea')) {
     populateNewIdea();
   }
@@ -103,6 +112,23 @@ function toggleStar(event) {
   } else {
     event.target.src = 'images/star.svg';
   }
+}
+
+function checkFields(fields) {
+  for (i = 0; i < fields.length; i++) {
+    if (fields[i].value === '') {
+      return false;
+    }
+  }
+  return true;
+}
+
+function enableButton(button) {
+  button.disabled = false;
+}
+
+function disableButton(button) {
+  button.disabled = true;
 }
 
 function clearFields(fields) {
