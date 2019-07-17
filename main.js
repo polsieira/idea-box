@@ -14,11 +14,19 @@ cardHolder.addEventListener('click', cardHandler);
 
 // Functions
 function populateCards(event) {
+  instantiatePersistedIdeas();
+  rebuildPersistedIdeas();
+}
+
+function instantiatePersistedIdeas() {
   ideasTemp = JSON.parse(localStorage.getItem('ideaArray'));
   ideasTemp.forEach(function(element) {
     element = new Idea(element);
     ideas.push(element);
   })
+}
+
+function rebuildPersistedIdeas() {
   if (ideas !== null) {
     ideas.forEach(function(element) {
     buildCard(element)
@@ -31,30 +39,6 @@ function ideaHandler(event) {
   if (event.target.classList.contains('button--save-idea')) {
     populateNewIdea();
   }
-}
-
-function cardHandler(event) {
-  event.preventDefault();
-  if (event.target.id === 'img img--delete-icon') {
-    deleteIdea(event);
-  }
-
-  if (event.target.id === 'img img--star-icon') {
-    toggleStar(event);
-  }
-}
-
-function toggleStar(event) {
-  var card = event.target.parentNode.parentNode;
-  var ideaIndex = locateIdea(card);
-  ideaIndex.updateStar();
-  ideas = ideaIndex.saveToStorage(ideas);
-  if(ideaIndex.star === true){
-    event.target.src = 'images/star-active.svg';
-  } else {
-    event.target.src = 'images/star.svg';
-  }
-  
 }
 
 function populateNewIdea() {
@@ -89,6 +73,17 @@ function buildCard(idea) {
   )
 }
 
+function cardHandler(event) {
+  event.preventDefault();
+  if (event.target.id === 'img img--delete-icon') {
+    deleteIdea(event);
+  }
+
+  if (event.target.id === 'img img--star-icon') {
+    toggleStar(event);
+  }
+}
+
 function deleteIdea(event) {
   var card = event.target.parentNode.parentNode;
   cardHolder.removeChild(card);
@@ -104,20 +99,21 @@ function locateIdea(card) {
   return ideas[index];
 }
 
+function toggleStar(event) {
+  var card = event.target.parentNode.parentNode;
+  var ideaIndex = locateIdea(card);
+  ideaIndex.updateStar();
+  ideas = ideaIndex.saveToStorage(ideas);
+  if(ideaIndex.star === true){
+    event.target.src = 'images/star-active.svg';
+  } else {
+    event.target.src = 'images/star.svg';
+  }
+  
+}
+
 function clearFields(fields) {
   fields.forEach(function(element) {
     element.value = "";
   });
-}
-
-
-
-function makeid(length) {
-   var result           = '';
-   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-   var charactersLength = characters.length;
-   for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * charactersLength));
-   }
-   return result;
 }
