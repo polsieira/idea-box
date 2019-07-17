@@ -108,16 +108,20 @@ function locateIdea(card) {
 }
 
 function editCard(event) {
-	// locateIdea(card); isn't firing here.
-	editModal.insertAdjacentHTML('afterbegin', `
-    <section class="section section--idea-card" data-id="1563336219774">
+	var idea = event.target.parentNode.parentNode;
+  console.log(idea);
+  var ideaTitle = idea.querySelector('h3');
+  var ideaBody = idea.querySelector('.p--idea-body')
+  console.log(ideaBody);
+  editModal.insertAdjacentHTML('afterbegin', `
+    <section class="section section--idea-card" data-id="${idea.dataset.id}">
       <article class="article article--idea-header">
         <img id="img img--star-icon" src= alt="star icon">
         <img id="img img--delete-icon" src="images/delete.svg" alt="delete icon">
       </article>
       <article class="article article--idea-content">
-        <input type="text" value="asdfa">
-        <textarea class="textarea textarea--edit">sdf</textarea>
+        <input type="text" value="${ideaTitle.innerText}">
+        <textarea class="textarea textarea--edit">${ideaBody.innerText}</textarea>
       </article>
       <article class="article article--idea-footer">
         <img src="images/upvote.svg" alt="upvote icon">
