@@ -113,6 +113,28 @@ li {
 	width: 90%;
 }
 
+.form--search-idea {
+	display: flex;
+}
+
+.button--search-ideas {
+	border-bottom-right-radius: 0px;	
+	border-top-right-radius: 0px;	
+	height: 45px;
+  margin: auto;
+  width: 45px;
+}
+
+.img-search {
+	margin-top: 6px;
+}
+
+.input--search-ideas {
+	border-bottom-left-radius: 0px;	
+	border-top-left-radius: 0px;
+	height: 45px;
+}
+
 .section--main-title,
 .section--filter-starred,
 .section--quality-filter,
