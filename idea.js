@@ -32,8 +32,22 @@ class Idea {
     }
   }
 
-  updateQuality(quality) {
-    this.quality = quality;
+  updateQuality(direction, nQualities, array) {
+    if (direction === 'up') {
+      if (this.quality === nQualities) {
+        this.quality =  nQualities;
+      } else {
+        this.quality++;
+      }
+    } else if (direction === 'down') {  
+      if (this.quality === 0) {
+        this.quality = 0;
+      } else {
+        this.quality--;
+      }
+    }
+    this.saveToStorage(array);
+    return array;
   }
 
   updateTitle(title) {
