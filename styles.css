@@ -117,16 +117,16 @@ li {
 	display: flex;
 }
 
-.button--search-ideas {
+.div--search-ideas {
+	align-items: center;
+	background-color: #1f1f3d;
 	border-bottom-right-radius: 0px;	
 	border-top-right-radius: 0px;	
+	display: flex;
 	height: 45px;
+	justify-content: space-around;
   margin: auto;
   width: 45px;
-}
-
-.img-search {
-	margin-top: 6px;
 }
 
 .input--search-ideas {
