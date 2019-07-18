@@ -76,6 +76,10 @@ button:disabled {
 	width: 90%;
 }
 
+.button--new-quality {
+	margin-top: -5px;
+}
+
 button,
 input,
 label {
@@ -113,9 +117,13 @@ ul {
 
 li {
 	font-size: 17px;
-	margin: 0px auto 5px auto;
-	padding-bottom: 2%;
-	width: 90%;
+  padding: 3% 0% 3% 5%;
+  width: 100%;
+}
+
+.li--qualities:hover{
+	background-color: #D14119;
+	border-left:8px solid #f58e72;
 }
 
 .form--search-idea {
@@ -165,12 +173,13 @@ li {
 	color: #BFBFDD;
 	font-size: 14px;
 	margin: auto;
+	margin-top: 24px;
 	width: 90%;
 }
 
 .input--new-quality {
 	background-color: #BFBFDD;
-	margin-top: 7px;
+	margin-top: -15px;
 	min-height: 3em;
 	width: 90%;
 }
