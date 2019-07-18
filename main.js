@@ -73,12 +73,10 @@ function rebuildPersistedIdeas() {
 
 function createIdeaHandler(event) {
   event.preventDefault();
-  if (event.target === titleInput || bodyInput) {
-    if (checkFields([titleInput, bodyInput])) {
-      enableButton(saveButton);
-    } else {
-      disableButton(saveButton);
-    }
+  if (checkFields([titleInput, bodyInput]) && (event.target === titleInput || bodyInput)) {
+    enableButton(saveButton);
+  } else {
+    disableButton(saveButton);
   }
   if (event.target.classList.contains('button--save-idea')) {
     populateNewIdea();
@@ -87,7 +85,7 @@ function createIdeaHandler(event) {
   if (event.target.classList.contains('input--search-ideas')) {
   	searchCards(event);
   }
-}
+}  
 
 function searchCards(event) {
 	var searchInput = event.target.value;
