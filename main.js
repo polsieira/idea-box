@@ -106,7 +106,7 @@ function buildCard(idea) {
       </article>
       <article class="article article--idea-footer">
         <img src="images/upvote.svg" alt="upvote icon" data-direction='up' id="img-quality">
-        <p>Quality: ${qualities[idea.quality]}</p>
+        <p class="p--quality">Quality: ${qualities[idea.quality]}</p>
         <img src="images/downvote.svg" alt="downvote icon" data-direction='down' id="img-quality">
       </article>
     </section>`

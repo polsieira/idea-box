@@ -227,7 +227,7 @@ main input {
 	background: #eaeaf4;
 	display: grid;
 	grid-template-columns: repeat(3, 33%);
-    grid-template-rows: repeat(10, 50%);	
+  grid-template-rows: repeat(10, 50%);	
 	flex-wrap: wrap;
 	grid-area: section;
 	justify-content: space-around;
@@ -243,7 +243,7 @@ main input {
 	flex-direction: column;
 	justify-content: space-between;
 	margin: 10px 10px;
-	/*width: 30%;*/
+
 }
 
 .article--idea-header {
@@ -262,6 +262,9 @@ main input {
 	margin: 5px 0;
 }
 
+.p--quality {
+	font-size: 17px;
+}
 
 .article--idea-footer {
 	background-color: #5356A4;
@@ -270,7 +273,7 @@ main input {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-  	height: 30px;
+  height: 30px;
 }
 
 #section--no-ideas {
