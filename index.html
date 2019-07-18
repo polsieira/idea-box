@@ -25,24 +25,24 @@
 		</section>
 		<section class="section section--new-quality">
 			<form class="form form--new-quality">
-				<label class="label label--new-quality">New Quality</label><br>
-				<input type="text" class="input input--new-quality"><br>
+				<label class="label label--new-quality" for="new-quality">New Quality</label><br>
+				<input type="text" class="input input--new-quality" name="new-quality"><br>
 				<button class="button button--new-quality">Add New Quality</button>
 			</form>
 		</section>
 	</aside>
 	<main>
 		<form class="form form--new-idea">
-			<label class="label label--title">Title</label><br>
-			<input type="text" class="input input--title" required="true"><br>
-			<label class="label label--body">Body</label><br>
+			<label class="label label--title" for="title">Title</label><br>
+			<input type="text" class="input input--title" required="true" name="title"><br>
+			<label class="label label--body" for="idea-submit-body">Body</label><br>
 			<!-- <input type="text" class="input input--body"><br> -->
-			<textarea class="textarea textarea--body"></textarea>
+			<textarea class="textarea textarea--body" name="idea-submit-body"></textarea>
 			<button disabled type="button" class="button button--save-idea">Save</button><br>
 		</form><br>
 		<form class="form form--search-idea">
 			<div class="div--search-ideas"><img class="img-search" src="images/search.svg"></div>
-			<input type="text" placeholder="Search ideas" class="input input--search-ideas">
+			<input type="text" placeholder="Search ideas" class="input input--search-ideas" name="search-bar">
 		</form>
 	</main>
 	<section class="section section--display-ideas">
