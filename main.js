@@ -81,6 +81,7 @@ function createIdeaHandler(event) {
   }
   if (event.target.classList.contains('button--save-idea')) {
     populateNewIdea();
+    disableButton(saveButton);
   }
 }
 
