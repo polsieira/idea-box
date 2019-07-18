@@ -313,9 +313,16 @@ main input {
 }
 
 .div--modal-popup {
+	animation-name: modal-animation;
+	animation-duration: 1s;
+	height: 350px;
 	margin: 14% auto;
 	width: 60%;
-	height: 350px;
+}
+
+@keyframes modal-animation {
+	from {opacity: 0.2;}
+	to {opacity: 1;}
 }
 
 .section--edit {
