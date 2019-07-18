@@ -96,7 +96,7 @@ function searchCards(event) {
 	console.log(searchInput);
 	for (var i = searchTitles.length - 1; i >= 0; i--) {
 		var ideaCard = searchBodies[i].parentNode.parentNode;
-		if (searchTitles[i].innerText.indexOf(searchInput) > -1 || searchBodies[i].innerText.indexOf(searchInput) > -1) {
+		if (searchTitles[i].innerText.toUpperCase().indexOf(searchInput.toUpperCase()) > -1 || searchBodies[i].innerText.toUpperCase().indexOf(searchInput.toUpperCase()) > -1) {
 			ideaCard.style.display = 'flex';
 		} else {
 			ideaCard.style.display = 'none';
