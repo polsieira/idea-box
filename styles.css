@@ -126,6 +126,12 @@ li {
 	border-left:8px solid #f58e72;
 }
 
+.show-all {
+	font-size: 14px;
+	padding-right: 10px;
+	text-align: right;
+}
+
 .form--search-idea {
 	display: flex;
 }

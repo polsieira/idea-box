@@ -7,9 +7,11 @@ const titleInput = document.querySelector('.input--title');
 const bodyInput = document.querySelector('.textarea--body');
 const saveButton = document.querySelector('.button--save-idea')
 const main = document.querySelector('main');
+const aside = document.querySelector('aside');
 const cardHolder = document.querySelector('.section--display-ideas');
 const editModal = document.querySelector('.div--modal-popup');
 const modal = document.querySelector('.div--modal');
+
 // Event Listeners
 window.addEventListener('load', repopulateCards);
 window.addEventListener('click', hideModal);
@@ -18,9 +20,50 @@ main.addEventListener('keyup', createIdeaHandler);
 main.addEventListener('click', createIdeaHandler);
 cardHolder.addEventListener('click', manageCardHandler);
 cardHolder.addEventListener('click', displayModal);
+aside.addEventListener('click', filterHandler);
 
 
 // Functions
+function filterHandler (event) {
+  if (event.target.classList.contains('li--qualities')) {
+    filterByQuality(event); 
+    showAll(event);
+  }
+}
+
+function showAll(event) {
+  if (event.target.classList.contains('show-all')) {
+  var currentQualities = document.querySelectorAll(".p--quality");
+    for (var i = currentQualities.length - 1; i >= 0; i--) {
+      var card = currentQualities[i].parentNode.parentNode;
+      card.style.display = 'flex';
+    }
+  }
+}
+
+function filterByQuality(event) {
+  var qualityIndex = qualities.indexOf(event.target.innerText);
+  var currentQualities = document.querySelectorAll(".p--quality");
+  for (var i = currentQualities.length - 1; i >= 0; i--) {
+    var card = currentQualities[i].parentNode.parentNode;
+    console.log(currentQualities[i].dataset.quality);
+    console.log(qualityIndex)
+    if (currentQualities[i].dataset.quality == qualityIndex) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  }
+
+  //   var ideaCard = searchBodies[i].parentNode.parentNode;
+  //   if (searchTitles[i].innerText.toUpperCase().indexOf(searchInput.toUpperCase()) > -1 || searchBodies[i].innerText.toUpperCase().indexOf(searchInput.toUpperCase()) > -1) {
+  //     ideaCard.style.display = 'flex';
+  //   } else {
+  //     ideaCard.style.display = 'none';
+  //   }
+  // }  
+}
+
 function repopulateCards(event) {
   instantiatePersistedIdeas();
   rebuildPersistedIdeas();
@@ -123,7 +166,7 @@ function buildCard(idea) {
       </article>
       <article class="article article--idea-footer">
         <img src="images/upvote.svg" alt="upvote icon" data-direction='up' id="img-quality" onmouseover="this.src='images/upvote-active.svg'" onmouseout="this.src='images/upvote.svg'">
-        <p class="p--quality">Quality: ${qualities[idea.quality]}</p>
+        <p class="p--quality" data-quality=${idea.quality} >Quality: ${qualities[idea.quality]}</p>
         <img src="images/downvote.svg" alt="downvote icon" data-direction='down' id="img-quality" onmouseover="this.src='images/downvote-active.svg'" onmouseout="this.src='images/downvote.svg'">
       </article>
     </section>`
