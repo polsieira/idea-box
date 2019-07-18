@@ -107,17 +107,18 @@ function locateIdea(card) {
   return ideas[index];
 }
 
+var idea;
 function editCard(event) {
   var card = event.target.parentNode.parentNode;
-  var idea = locateIdea(card);
+  idea = locateIdea(card);
   var starImage = idea.star === true ? 'images/star-active.svg' : 'images/star.svg';
   editModal.insertAdjacentHTML('afterbegin', `
     <section class="section section--idea-card" data-id="${idea.id}">
       <article class="article article--idea-header">
-      <img id="img img--star-icon" src=${starImage} alt="star icon">
+      <img class="updated-star"id="img img--star-icon" src=${starImage} alt="star icon">
       </article>
       <article class="article article--idea-content">
-        <input type="text" value="${idea.title}">
+        <input class="updated-title" type="text" value="${idea.title}">
         <textarea class="textarea textarea--edit">${idea.body}</textarea>
       </article>
       <article class="article article--idea-footer">
@@ -125,11 +126,25 @@ function editCard(event) {
         <p>Quality: Swill</p>
         <img src="images/downvote.svg" alt="downvote icon">
       </article>
-    </section>`); 
+    </section>`
+  ); 
+  // if (event.target newValues(idea));
+  // console.log(idea);
+}
+
+function newValues() {
+  console.log('newValue')
+  var editIdea = {
+    title: document.querySelector('.updated-title').value,
+    body: document.querySelector('.textarea--edit').value,
+    star: document.querySelector('.updated-star').src.split('').reverse()[4] === 'e' ? true: false,
+  };
+  console.log(editIdea);
+  idea.updateIdea(editIdea, ideas);
 }
 
 function displayModal(event) {
-	if (event.target.classList.contains('h3--idea-header' || 'p--idea-body')) {
+	if (event.target.classList.contains('h3--idea-header') || event.target.classList.contains('p--idea-body')) {
 		modal.style.display = 'block';
 		editCard(event);
 	}
@@ -137,10 +152,9 @@ function displayModal(event) {
 
 function hideModal(event) {
 	if (event.target.id === 'edit-box' || event.key === 'Enter') {
-		console.log('click');
 		modal.style.display = 'none';
-		console.log('click2');
-
+    newValues();
+    location.reload();
 		//will need to call a function that 1) replaces this card without changing time stamp? 2)pushes back into array/localStorage
   }
 }

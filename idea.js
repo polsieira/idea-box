@@ -8,6 +8,7 @@ class Idea {
   }
 
   saveToStorage(array) {
+    console.log(array);
     array = array.filter(element => element.id !== this.id);
     array.push(this); 
     localStorage.setItem('ideaArray', JSON.stringify(array));
@@ -20,16 +21,13 @@ class Idea {
     return array;
   }
 
-  updateIdea(info, property) {     //would be great if we could use the input class or id to know what property to update
-    if (property === 'title') {
-      this.updateTitle(info);
-    }
-    if (property === 'body') {
-      this.updateBody(info);
-    }
-    if (property === 'star') {
-      this.updateStar(info);
-    }
+  updateIdea(obj, ideas) {     //would be great if we could use the input class or id to know what property to update
+    this.title = obj.title;
+    this.body = obj.body;
+    this.star = obj.star;
+    console.log(this.title, this.body, this.star);
+    this.saveToStorage(ideas);
+    return ideas;
   }
 
   updateQuality(quality) {
