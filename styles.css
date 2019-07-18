@@ -302,8 +302,19 @@ main input {
 }
 
 .div--modal-popup {
-	margin: 30% auto;
+	margin: 14% auto;
 	width: 60%;
-	height: 600px;
+	height: 350px;
+}
+
+.section--edit {
+	background: #a9aad2;
+	padding: 0;
+}
+
+h5 {
+	color: #ffffff;
+	margin: 0 auto;
+	padding-top: 5px;
 }
 

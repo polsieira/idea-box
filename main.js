@@ -147,18 +147,19 @@ function editCard(event) {
   idea = locateIdea(card);
   var starImage = idea.star === true ? 'images/star-active.svg' : 'images/star.svg';
   editModal.insertAdjacentHTML('afterbegin', `
-    <section class="section section--idea-card" data-id="${idea.id}">
+    <section class="section--edit section--idea-card" data-id="${idea.id}">
       <article class="article article--idea-header">
-      <img class="updated-star"id="img img--star-icon" src=${starImage} alt="star icon">
+        <img class="updated-star"id="img img--star-icon" src=${starImage} alt="star icon">
+        <h5>Edit Your Idea</h5>
       </article>
       <article class="article article--idea-content">
-        <input class="updated-title" type="text" value="${idea.title}">
-        <textarea class="textarea textarea--edit">${idea.body}</textarea>
+        <label>Title</label><br>
+          <input class="updated-title" type="text" value="${idea.title}"><br>
+        <label>Body</label><br>  
+          <textarea class="textarea textarea--edit">${idea.body}</textarea>
       </article>
       <article class="article article--idea-footer">
-        <img src="images/upvote.svg" alt="upvote icon">
-        <p>Quality: Swill</p>
-        <img src="images/downvote.svg" alt="downvote icon">
+        <h5>Hit "Return" To Submit Your Changes"</h5>
       </article>
     </section>`
   ); 
