@@ -108,20 +108,17 @@ function locateIdea(card) {
 }
 
 function editCard(event) {
-	var idea = event.target.parentNode.parentNode;
-  console.log(idea);
-  var ideaTitle = idea.querySelector('h3');
-  var ideaBody = idea.querySelector('.p--idea-body')
-  console.log(ideaBody);
+  var card = event.target.parentNode.parentNode;
+  var idea = locateIdea(card);
+  var starImage = idea.star === true ? 'images/star-active.svg' : 'images/star.svg';
   editModal.insertAdjacentHTML('afterbegin', `
-    <section class="section section--idea-card" data-id="${idea.dataset.id}">
+    <section class="section section--idea-card" data-id="${idea.id}">
       <article class="article article--idea-header">
-        <img id="img img--star-icon" src= alt="star icon">
-        <img id="img img--delete-icon" src="images/delete.svg" alt="delete icon">
+      <img id="img img--star-icon" src=${starImage} alt="star icon">
       </article>
       <article class="article article--idea-content">
-        <input type="text" value="${ideaTitle.innerText}">
-        <textarea class="textarea textarea--edit">${ideaBody.innerText}</textarea>
+        <input type="text" value="${idea.title}">
+        <textarea class="textarea textarea--edit">${idea.body}</textarea>
       </article>
       <article class="article article--idea-footer">
         <img src="images/upvote.svg" alt="upvote icon">
@@ -142,7 +139,8 @@ function hideModal(event) {
 	if (event.target.id === 'edit-box' || event.key === 'Enter') {
 		console.log('click');
 		modal.style.display = 'none';
-		console.log('click2')
+		console.log('click2');
+
 		//will need to call a function that 1) replaces this card without changing time stamp? 2)pushes back into array/localStorage
   }
 }
