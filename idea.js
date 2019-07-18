@@ -8,7 +8,6 @@ class Idea {
   }
 
   saveToStorage(array) {
-    console.log(array);
     array = array.filter(element => element.id !== this.id);
     array.push(this); 
     localStorage.setItem('ideaArray', JSON.stringify(array));
@@ -25,7 +24,6 @@ class Idea {
     this.title = obj.title;
     this.body = obj.body;
     this.star = obj.star;
-    console.log(this.title, this.body, this.star);
     this.saveToStorage(ideas);
     return ideas;
   }

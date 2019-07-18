@@ -7,6 +7,7 @@
 body {
 	align-items: stretch;
 	display: grid;
+	font-family: "Open Sans", sans-serif;
 	grid-template-columns: 13% 13% 1fr 1fr 1fr 1fr;
 	grid-template-rows: 200px 200px 190px 190px 190px;
 	grid-template-areas: 
@@ -25,7 +26,6 @@ aside {
 	color: #FFFFFF;
 	display: flex;
 	flex-flow: column;
-	font-family: "Open Sans", sans-serif;
 	grid-area: aside;
 	margin: 0px;
 	min-height: 100%;
@@ -170,8 +170,8 @@ li {
 
 .input--new-quality {
 	background-color: #BFBFDD;
-	min-height: 3em;
 	margin-top: 7px;
+	min-height: 3em;
 	width: 90%;
 }
 
@@ -213,8 +213,8 @@ main input {
 }
 
 .input--body {
-	min-height: 7em;
 	margin-top: 5px;
+	min-height: 7em;
 }
 
 .button--save-idea {
@@ -228,7 +228,6 @@ main input {
 }
 
 .section--display-ideas {
-	/*align-content: space-around;*/
 	background: #eaeaf4;
 	display: grid;
 	grid-template-columns: repeat(3, 33%);
@@ -238,7 +237,6 @@ main input {
 	justify-content: space-around;
 	margin-left: 0;
 	overflow: scroll;
-	/*min-height: 15em;*/
 }
 
 .section--idea-card {
@@ -259,10 +257,10 @@ main input {
 }
 
 .article--idea-content {
-	overflow: scroll;
 	color: #1F1F3D;
-	padding: 10px;
 	height: 100%;
+	overflow: scroll;
+	padding: 10px;
 }
 
 .h3--idea-header {
@@ -274,12 +272,12 @@ main input {
 }
 
 .article--idea-footer {
+	align-items: center;
 	background-color: #5356A4;
 	color: #fff;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: center;
   height: 30px;
 }
 
@@ -305,16 +303,17 @@ main input {
 .div--modal {
 	background: rgba(0, 0, 0, 0.5);
 	display: none;	
-	position: fixed;
-	left: 0;
-	top: 0;
 	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
 	width: 100%;
 }
 
 .div--modal-popup {
 	animation-name: modal-animation;
 	animation-duration: 1s;
+	font-family: "Open Sans", sans-serif;
 	height: 350px;
 	margin: 14% auto;
 	width: 60%;
