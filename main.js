@@ -91,7 +91,6 @@ function searchCards(event) {
 	var searchInput = event.target.value;
 	var searchTitles = document.querySelectorAll('.h3--idea-header');
 	var searchBodies = document.querySelectorAll('.p--idea-body');
-	console.log(searchInput);
 	for (var i = searchTitles.length - 1; i >= 0; i--) {
 		var ideaCard = searchBodies[i].parentNode.parentNode;
 		if (searchTitles[i].innerText.toUpperCase().indexOf(searchInput.toUpperCase()) > -1 || searchBodies[i].innerText.toUpperCase().indexOf(searchInput.toUpperCase()) > -1) {
@@ -99,10 +98,6 @@ function searchCards(event) {
 		} else {
 			ideaCard.style.display = 'none';
 		}
-		//Check the values of the bodies against search input
-		//Check the values of the titles against search input
-		//if the strings are not equal we want to hide them
-		//if they are equal make visible
 	}
 }
 
@@ -184,18 +179,14 @@ function editCard(event) {
       </article>
     </section>`
   ); 
-  // if (event.target newValues(idea));
-  // console.log(idea);
 }
 
 function newValues() {
-  console.log('newValue')
   var editIdea = {
     title: document.querySelector('.updated-title').value,
     body: document.querySelector('.textarea--edit').value,
     star: document.querySelector('.updated-star').src.split('').reverse()[4] === 'e' ? true: false,
   };
-  console.log(editIdea);
   idea.updateIdea(editIdea, ideas);
 }
 
@@ -211,7 +202,6 @@ function hideModal(event) {
 		modal.style.display = 'none';
     newValues();
     location.reload();
-		//will need to call a function that 1) replaces this card without changing time stamp? 2)pushes back into array/localStorage
   }
 }
 
@@ -235,7 +225,6 @@ function changeQuality(event) {
 }
 
 function changeQualityText(event, ideaIndex) {
-  console.log(event)
   event.target.parentNode.children[1].innerText = `Quality: ${qualities[ideaIndex.quality]}`;
 }
 
