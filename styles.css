@@ -62,6 +62,11 @@ button {
 	width: 100%;
 }
 
+button:hover,
+img:hover {
+	cursor: pointer;
+}
+
 button:disabled {
 	opacity: 0.35;
 }
@@ -289,6 +294,10 @@ main input {
   height: 200px;
   grid-column-start: 2;
   justify-self: center;
+}
+
+#lightbulb-img:hover {
+	cursor: default;
 }
 
 .div--modal {
