@@ -262,6 +262,7 @@ main input {
 	overflow: scroll;
 	color: #1F1F3D;
 	padding: 10px;
+	height: 100%;
 }
 
 .h3--idea-header {
