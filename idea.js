@@ -1,10 +1,10 @@
 class Idea {
   constructor(obj) {
-    this.id = obj.id; //can use id making function or Date.now()
-    this.title = obj.title; //string
-    this.body = obj.body; //string
-    this.star = obj.star || false; //boolean
-    this.quality = obj.quality || 0;  //integer specifying a quality in array
+    this.id = obj.id;
+    this.title = obj.title;
+    this.body = obj.body;
+    this.star = obj.star || false;
+    this.quality = obj.quality || 0; 
   }
 
   saveToStorage(array) {
@@ -21,7 +21,7 @@ class Idea {
     return array;
   }
 
-  updateIdea(obj, ideas) {     //would be great if we could use the input class or id to know what property to update
+  updateIdea(obj, ideas) {    
     this.title = obj.title;
     this.body = obj.body;
     this.star = obj.star;
@@ -31,19 +31,12 @@ class Idea {
   }
 
   updateQuality(direction, nQualities, array) {
-    if (direction === 'up') {
-      if (this.quality === nQualities) {
-        this.quality =  nQualities;
-      } else {
+    if (direction === 'up' && this.quality !== nQualities) {
         this.quality++;
-      }
-    } else if (direction === 'down') {  
-      if (this.quality === 0) {
-        this.quality = 0;
-      } else {
+    } else if (direction === 'down' && this.quality !== 0) {  
         this.quality--;
-      }
     }
+
     this.saveToStorage(array);
     return array;
   }
