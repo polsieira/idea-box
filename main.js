@@ -2,6 +2,7 @@
 // Global variables
 var qualities = ['Swill','Plausible','Genius'];
 var ideas = [];
+var idea;
 const titleInput = document.querySelector('.input--title');
 const bodyInput = document.querySelector('.textarea--body');
 const saveButton = document.querySelector('.button--save-idea')
@@ -83,6 +84,28 @@ function createIdeaHandler(event) {
     populateNewIdea();
     disableButton(saveButton);
   }
+  if (event.target.classList.contains('input--search-ideas')) {
+  	searchCards(event);
+  }
+}
+
+function searchCards(event) {
+	var searchInput = event.target.value;
+	var searchTitles = document.querySelectorAll('.h3--idea-header');
+	var searchBodies = document.querySelectorAll('.p--idea-body');
+	console.log(searchInput);
+	for (var i = searchTitles.length - 1; i >= 0; i--) {
+		var ideaCard = searchBodies[i].parentNode.parentNode;
+		if (searchTitles[i].innerText.indexOf(searchInput) > -1 || searchBodies[i].innerText.indexOf(searchInput) > -1) {
+			ideaCard.style.display = 'flex';
+		} else {
+			ideaCard.style.display = 'none';
+		}
+		//Check the values of the bodies against search input
+		//Check the values of the titles against search input
+		//if the strings are not equal we want to hide them
+		//if they are equal make visible
+	}
 }
 
 function populateNewIdea() {
@@ -142,7 +165,6 @@ function locateIdea(card) {
   return ideas[index];
 }
 
-var idea;
 function editCard(event) {
   var card = event.target.parentNode.parentNode;
   idea = locateIdea(card);
