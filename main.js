@@ -23,6 +23,35 @@ cardHolder.addEventListener('click', displayModal);
 function repopulateCards(event) {
   instantiatePersistedIdeas();
   rebuildPersistedIdeas();
+  toggleNoIdeasDisplay();
+}
+
+function toggleNoIdeasDisplay() {
+  var localArray = localStorage.getItem('ideaArray');
+  if(localArray === "[]") {
+    addNoIdeasDisplay();
+  } else {
+    removeNoIdeasDisplay();
+  }    
+}
+
+function addNoIdeasDisplay() {
+  cardHolder.insertAdjacentHTML('afterbegin',`
+    <p id="section--no-ideas">To add an idea fill out the form above!</p>
+    <img id="lightbulb-img" src="images/lightbulb-idea.svg" alt="lightbulb image">
+  `);
+}
+
+function removeNoIdeasDisplay() {
+  var noIdeas = document.getElementById('section--no-ideas');
+  var lightbulbImg = document.getElementById('lightbulb-img');
+
+  if(noIdeas === null || lightbulbImg === null) {
+    return;
+  } else {
+    noIdeas.remove();
+    lightbulbImg.remove();
+  }
 }
 
 function instantiatePersistedIdeas() {
@@ -60,6 +89,7 @@ function populateNewIdea() {
   ideas = idea.saveToStorage(ideas);
   buildCard(idea);
   clearFields([titleInput, bodyInput]);
+  toggleNoIdeasDisplay();
 }
 
 function buildCard(idea) {
@@ -101,6 +131,7 @@ function deleteIdea(event) {
   cardHolder.removeChild(card);
   var ideaIndex = locateIdea(card);
   ideas = ideaIndex.deleteFromStorage(ideas);
+  toggleNoIdeasDisplay();
 }
 
 function locateIdea(card) {
