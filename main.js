@@ -98,16 +98,16 @@ function buildCard(idea) {
     <section class="section section--idea-card" data-id="${idea.id}">
       <article class="article article--idea-header">
         <img id="img img--star-icon" src=${starImage} alt="star icon">
-        <img id="img img--delete-icon" src="images/delete.svg" alt="delete icon">
+        <img id="img img--delete-icon" src="images/delete.svg" onmouseover="this.src='images/delete-active.svg'" onmouseout="this.src='images/delete.svg'" alt="delete icon">
       </article>
       <article class="article article--idea-content">
         <h3 class="h3 h3--idea-header">${idea.title}</h3>
         <p class="p p--idea-body">${idea.body}</p>
       </article>
       <article class="article article--idea-footer">
-        <img src="images/upvote.svg" alt="upvote icon" data-direction='up' id="img-quality">
+        <img src="images/upvote.svg" alt="upvote icon" data-direction='up' id="img-quality" onmouseover="this.src='images/upvote-active.svg'" onmouseout="this.src='images/upvote.svg'">
         <p class="p--quality">Quality: ${qualities[idea.quality]}</p>
-        <img src="images/downvote.svg" alt="downvote icon" data-direction='down' id="img-quality">
+        <img src="images/downvote.svg" alt="downvote icon" data-direction='down' id="img-quality" onmouseover="this.src='images/downvote-active.svg'" onmouseout="this.src='images/downvote.svg'">
       </article>
     </section>`
   )
