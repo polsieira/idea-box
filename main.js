@@ -25,14 +25,40 @@ aside.addEventListener('click', filterHandler);
 
 // Functions
 function filterHandler (event) {
+  if (event.target.classList.contains('button--starred-ideas')) {
+    filterByFavorite(event); 
+    // showAll(event);
+  }
   if (event.target.classList.contains('li--qualities')) {
     filterByQuality(event); 
     showAll(event);
   }
 }
 
+function filterByFavorite(event) {
+  var currentFavorite = document.querySelectorAll('.img--star-icon');
+  if (event.target.innerText === 'Show Starred Ideas') {
+    for (var i = currentFavorite.length - 1; i >= 0; i--) {
+      changeText(event.target, 'View All Ideas');
+      var card = currentFavorite[i].parentNode.parentNode;
+      if (currentFavorite[i].src.includes('images/star-active.svg')) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    }
+  } else { 
+    showAll(event);
+    changeText(event.target, 'Show Starred Ideas');
+  }
+}
+
+function changeText(element, text) {
+  element.innerText = text;
+}
+
 function showAll(event) {
-  if (event.target.classList.contains('show-all')) {
+  if (event.target.classList.contains('show-all') || event.target.classList.contains('button--starred-ideas')) {
   var currentQualities = document.querySelectorAll(".p--quality");
     for (var i = currentQualities.length - 1; i >= 0; i--) {
       var card = currentQualities[i].parentNode.parentNode;
@@ -46,8 +72,6 @@ function filterByQuality(event) {
   var currentQualities = document.querySelectorAll(".p--quality");
   for (var i = currentQualities.length - 1; i >= 0; i--) {
     var card = currentQualities[i].parentNode.parentNode;
-    console.log(currentQualities[i].dataset.quality);
-    console.log(qualityIndex)
     if (currentQualities[i].dataset.quality == qualityIndex) {
       card.style.display = 'flex';
     } else {
@@ -157,7 +181,7 @@ function buildCard(idea) {
   cardHolder.insertAdjacentHTML('afterbegin', `
     <section class="section section--idea-card" data-id="${idea.id}">
       <article class="article article--idea-header">
-        <img id="img img--star-icon" src=${starImage} alt="star icon">
+        <img class="img--star-icon" id="img img--star-icon" src=${starImage} alt="star icon">
         <img id="img img--delete-icon" src="images/delete.svg" onmouseover="this.src='images/delete-active.svg'" onmouseout="this.src='images/delete.svg'" alt="delete icon">
       </article>
       <article class="article article--idea-content">
