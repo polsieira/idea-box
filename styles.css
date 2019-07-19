@@ -224,6 +224,11 @@ main input {
 	transform: scale(1.2);	
 }
 
+.img-search:hover {
+	cursor: inherit;
+	transform: none;
+}
+
 
 .input--title {
 	margin-bottom: 22px;
