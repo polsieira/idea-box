@@ -65,10 +65,12 @@ button {
 button:hover,
 img:hover {
 	cursor: pointer;
+	transform: scale(1.02);
 }
 
 button:disabled {
 	opacity: 0.35;
+	transform: scale(1);
 }
 
 .button--new-quality,
@@ -123,7 +125,7 @@ li {
 
 .li--qualities:hover{
 	background-color: #D14119;
-	border-left:8px solid #f58e72;
+	border-left: 8px solid #f58e72;
 }
 
 .show-all {
@@ -215,12 +217,13 @@ main input {
 	width: 100%;
 }
 
-#img--star-icon:hover,
-#img--delete-icon:hover,
-#img--upvote:hover,
-#img--downvote:hover {
-	color: #d14119;
+.img--star-icon:hover,
+.img--delete-icon:hover,
+.img--upvote:hover,
+.img--downvote:hover {
+	transform: scale(1.2);	
 }
+
 
 .input--title {
 	margin-bottom: 22px;
@@ -261,7 +264,10 @@ main input {
 	flex-direction: column;
 	justify-content: space-between;
 	margin: 10px 10px;
+}
 
+.section--idea-card:hover {
+  box-shadow: 10px 10px 8px #888888;
 }
 
 .article--idea-header {
