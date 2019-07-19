@@ -115,10 +115,12 @@ function removeNoIdeasDisplay() {
 
 function instantiatePersistedIdeas() {
   ideasTemp = JSON.parse(localStorage.getItem('ideaArray'));
-  ideasTemp.forEach(function(element) {
-    element = new Idea(element);
-    ideas.push(element);
-  })
+  if (ideasTemp !== null) {
+    ideasTemp.forEach(function(element) {
+      element = new Idea(element);
+      ideas.push(element);
+    })
+  }  
 }
 
 function rebuildPersistedIdeas() {
