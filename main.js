@@ -27,7 +27,6 @@ aside.addEventListener('click', filterHandler);
 function filterHandler (event) {
   if (event.target.classList.contains('button--starred-ideas')) {
     filterByFavorite(event); 
-    // showAll(event);
   }
   if (event.target.classList.contains('li--qualities')) {
     filterByQuality(event); 
@@ -78,14 +77,6 @@ function filterByQuality(event) {
       card.style.display = 'none';
     }
   }
-
-  //   var ideaCard = searchBodies[i].parentNode.parentNode;
-  //   if (searchTitles[i].innerText.toUpperCase().indexOf(searchInput.toUpperCase()) > -1 || searchBodies[i].innerText.toUpperCase().indexOf(searchInput.toUpperCase()) > -1) {
-  //     ideaCard.style.display = 'flex';
-  //   } else {
-  //     ideaCard.style.display = 'none';
-  //   }
-  // }  
 }
 
 function repopulateCards(event) {
@@ -289,10 +280,15 @@ function changeQuality(event) {
   var ideaIndex = locateIdea(card);
   ideas = ideaIndex.updateQuality(event.target.dataset.direction, qualities.length - 1, ideas); 
   changeQualityText(event, ideaIndex); 
+  changeQualityData(event, ideaIndex)
 }
 
 function changeQualityText(event, ideaIndex) {
   event.target.parentNode.children[1].innerText = `Quality: ${qualities[ideaIndex.quality]}`;
+}
+
+function changeQualityData(event, ideaIndex) {
+  event.target.parentNode.children[1].dataset.quality = ideaIndex.quality;
 }
 
 function locateIdea(card) {
