@@ -7,9 +7,11 @@ const titleInput = document.querySelector('.input--title');
 const bodyInput = document.querySelector('.textarea--body');
 const saveButton = document.querySelector('.button--save-idea')
 const main = document.querySelector('main');
+const aside = document.querySelector('aside');
 const cardHolder = document.querySelector('.section--display-ideas');
 const editModal = document.querySelector('.div--modal-popup');
 const modal = document.querySelector('.div--modal');
+
 // Event Listeners
 window.addEventListener('load', repopulateCards);
 window.addEventListener('click', hideModal);
@@ -18,9 +20,65 @@ main.addEventListener('keyup', createIdeaHandler);
 main.addEventListener('click', createIdeaHandler);
 cardHolder.addEventListener('click', manageCardHandler);
 cardHolder.addEventListener('click', displayModal);
+aside.addEventListener('click', filterHandler);
 
 
 // Functions
+function filterHandler (event) {
+  if (event.target.classList.contains('button--starred-ideas')) {
+    filterByFavorite(event); 
+  }
+  if (event.target.classList.contains('li--qualities')) {
+    filterByQuality(event); 
+    showAll(event);
+  }
+}
+
+function filterByFavorite(event) {
+  var currentFavorite = document.querySelectorAll('.img--star-icon');
+  if (event.target.innerText === 'Show Starred Ideas') {
+    for (var i = currentFavorite.length - 1; i >= 0; i--) {
+      changeText(event.target, 'View All Ideas');
+      var card = currentFavorite[i].parentNode.parentNode;
+      if (currentFavorite[i].src.includes('images/star-active.svg')) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    }
+  } else { 
+    showAll(event);
+    changeText(event.target, 'Show Starred Ideas');
+  }
+}
+
+function changeText(element, text) {
+  element.innerText = text;
+}
+
+function showAll(event) {
+  if (event.target.classList.contains('show-all') || event.target.classList.contains('button--starred-ideas')) {
+  var currentQualities = document.querySelectorAll(".p--quality");
+    for (var i = currentQualities.length - 1; i >= 0; i--) {
+      var card = currentQualities[i].parentNode.parentNode;
+      card.style.display = 'flex';
+    }
+  }
+}
+
+function filterByQuality(event) {
+  var qualityIndex = qualities.indexOf(event.target.innerText);
+  var currentQualities = document.querySelectorAll(".p--quality");
+  for (var i = currentQualities.length - 1; i >= 0; i--) {
+    var card = currentQualities[i].parentNode.parentNode;
+    if (currentQualities[i].dataset.quality == qualityIndex) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  }
+}
+
 function repopulateCards(event) {
   instantiatePersistedIdeas();
   rebuildPersistedIdeas();
@@ -57,17 +115,14 @@ function removeNoIdeasDisplay() {
 
 function instantiatePersistedIdeas() {
   ideasTemp = JSON.parse(localStorage.getItem('ideaArray'));
-  ideasTemp.forEach(function(element) {
-    element = new Idea(element);
-    ideas.push(element);
-  })
+  if (ideasTemp !== null) {
+    ideasTemp.forEach(element => ideas.push(new Idea(element)))
+  }  
 }
 
 function rebuildPersistedIdeas() {
   if (ideas !== null) {
-    ideas.forEach(function(element) {
-    buildCard(element)
-    });
+    ideas.forEach(element => buildCard(element));
   }
 }
 
@@ -114,7 +169,7 @@ function buildCard(idea) {
   cardHolder.insertAdjacentHTML('afterbegin', `
     <section class="section section--idea-card" data-id="${idea.id}">
       <article class="article article--idea-header">
-        <img id="img img--star-icon" src=${starImage} alt="star icon">
+        <img class="img--star-icon" id="img img--star-icon" src=${starImage} alt="star icon">
         <img id="img img--delete-icon" src="images/delete.svg" onmouseover="this.src='images/delete-active.svg'" onmouseout="this.src='images/delete.svg'" alt="delete icon">
       </article>
       <article class="article article--idea-content">
@@ -123,7 +178,7 @@ function buildCard(idea) {
       </article>
       <article class="article article--idea-footer">
         <img src="images/upvote.svg" alt="upvote icon" data-direction='up' id="img-quality" onmouseover="this.src='images/upvote-active.svg'" onmouseout="this.src='images/upvote.svg'">
-        <p class="p--quality">Quality: ${qualities[idea.quality]}</p>
+        <p class="p--quality" data-quality=${idea.quality} >Quality: ${qualities[idea.quality]}</p>
         <img src="images/downvote.svg" alt="downvote icon" data-direction='down' id="img-quality" onmouseover="this.src='images/downvote-active.svg'" onmouseout="this.src='images/downvote.svg'">
       </article>
     </section>`
@@ -152,9 +207,7 @@ function deleteIdea(event) {
 }
 
 function locateIdea(card) {
-  var index = ideas.findIndex(function(element) {
-    return element.id == card.dataset.id
-  });
+  var index = ideas.findIndex(element => element.id == card.dataset.id);
   return ideas[index];
 }
 
@@ -222,17 +275,15 @@ function changeQuality(event) {
   var ideaIndex = locateIdea(card);
   ideas = ideaIndex.updateQuality(event.target.dataset.direction, qualities.length - 1, ideas); 
   changeQualityText(event, ideaIndex); 
+  changeQualityData(event, ideaIndex)
 }
 
 function changeQualityText(event, ideaIndex) {
   event.target.parentNode.children[1].innerText = `Quality: ${qualities[ideaIndex.quality]}`;
 }
 
-function locateIdea(card) {
-  var index = ideas.findIndex(function(element) {
-    return element.id == card.dataset.id
-  }); 
-  return ideas[index];
+function changeQualityData(event, ideaIndex) {
+  event.target.parentNode.children[1].dataset.quality = ideaIndex.quality;
 }
 
 function checkFields(fields) {
@@ -253,7 +304,5 @@ function disableButton(button) {
 }
 
 function clearFields(fields) {
-  fields.forEach(function(element) {
-    element.value = "";
-  });
+  fields.forEach(element => element.value = "");
 }
