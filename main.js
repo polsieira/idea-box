@@ -116,18 +116,13 @@ function removeNoIdeasDisplay() {
 function instantiatePersistedIdeas() {
   ideasTemp = JSON.parse(localStorage.getItem('ideaArray'));
   if (ideasTemp !== null) {
-    ideasTemp.forEach(function(element) {
-      element = new Idea(element);
-      ideas.push(element);
-    })
+    ideasTemp.forEach(element => ideas.push(new Idea(element)))
   }  
 }
 
 function rebuildPersistedIdeas() {
   if (ideas !== null) {
-    ideas.forEach(function(element) {
-    buildCard(element)
-    });
+    ideas.forEach(element => buildCard(element));
   }
 }
 
@@ -212,9 +207,7 @@ function deleteIdea(event) {
 }
 
 function locateIdea(card) {
-  var index = ideas.findIndex(function(element) {
-    return element.id == card.dataset.id
-  });
+  var index = ideas.findIndex(element => element.id == card.dataset.id);
   return ideas[index];
 }
 
@@ -293,13 +286,6 @@ function changeQualityData(event, ideaIndex) {
   event.target.parentNode.children[1].dataset.quality = ideaIndex.quality;
 }
 
-function locateIdea(card) {
-  var index = ideas.findIndex(function(element) {
-    return element.id == card.dataset.id
-  }); 
-  return ideas[index];
-}
-
 function checkFields(fields) {
   for (i = 0; i < fields.length; i++) {
     if (fields[i].value === '') {
@@ -318,7 +304,5 @@ function disableButton(button) {
 }
 
 function clearFields(fields) {
-  fields.forEach(function(element) {
-    element.value = "";
-  });
+  fields.forEach(element => element.value = "");
 }
