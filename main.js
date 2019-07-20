@@ -122,6 +122,7 @@ function instantiatePersistedIdeas() {
 
 function rebuildPersistedIdeas() {
   if (ideas !== null) {
+    ideas.sort(chronologicalSort);
     ideas.forEach(element => buildCard(element));
   }
 }
@@ -305,4 +306,12 @@ function disableButton(button) {
 
 function clearFields(fields) {
   fields.forEach(element => element.value = "");
+}
+
+function chronologicalSort(a,b) {
+  if(a.id < b.id) {
+    return -1;
+  } else {
+    return 1;
+  }
 }
