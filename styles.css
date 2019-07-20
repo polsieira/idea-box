@@ -306,7 +306,7 @@ main input {
 	justify-content: space-between;
   height: 30px;
 }
-
+#no-stars-message,
 #section--no-ideas {
 	align-self: center;
   grid-column: 1 / span 3;
