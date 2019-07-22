@@ -43,8 +43,10 @@ function filterByFavorite(event) {
       var card = currentFavorite[i].parentNode.parentNode;
       if (currentFavorite[i].src.includes('images/star-active.svg')) {
         card.style.display = 'flex';
+        card.classList.add('display');
       } else {
         card.style.display = 'none';
+        card.classList.remove('display');
       }
     }
   } else { 
@@ -109,6 +111,7 @@ function showAll(event) {
     for (var i = currentQualities.length - 1; i >= 0; i--) {
       var card = currentQualities[i].parentNode.parentNode;
       card.style.display = 'flex';
+      card.classList.add('display');
     }
   }
 }
@@ -120,8 +123,10 @@ function filterByQuality(event) {
     var card = currentQualities[i].parentNode.parentNode;
     if (currentQualities[i].dataset.quality == qualityIndex) {
       card.style.display = 'flex';
+      card.classList.add('display');
     } else {
       card.style.display = 'none';
+      card.classList.remove('display');
     }
   }
 }
@@ -196,7 +201,7 @@ function searchCards(event) {
 	for (var i = searchTitles.length - 1; i >= 0; i--) {
 		var ideaCard = searchBodies[i].parentNode.parentNode;
 		if (searchTitles[i].innerText.toUpperCase().indexOf(searchInput.toUpperCase()) > -1 || searchBodies[i].innerText.toUpperCase().indexOf(searchInput.toUpperCase()) > -1) {
-			ideaCard.style.display = 'flex';
+      ideaCard.classList.contains('display') ? ideaCard.style.display = 'flex' : ideaCard.style.display = 'none';
 		} else {
 			ideaCard.style.display = 'none';
 		}
@@ -214,7 +219,7 @@ function populateNewIdea() {
 function buildCard(idea) {
   var starImage = idea.star === true ? 'images/star-active.svg' : 'images/star.svg';
   cardHolder.insertAdjacentHTML('afterbegin', `
-    <section class="section section--idea-card" data-id="${idea.id}">
+    <section class="section section--idea-card display" data-id="${idea.id}">
       <article class="article article--idea-header">
         <img class="img--star-icon" id="img img--star-icon" src=${starImage} alt="star icon">
         <img class="img img--delete-icon" id="img img--delete-icon" src="images/delete.svg" onmouseover="this.src='images/delete-active.svg'" onmouseout="this.src='images/delete.svg'" alt="delete icon">
