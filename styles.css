@@ -31,6 +31,19 @@ aside {
 	min-height: 100%;
 }
 
+.hamburger {
+	display: none;
+}
+
+	.close-hamburger {
+	display: none;
+	height: 50px;
+  width: 50px;
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+
 h1 {
 	font-size: 19px;
 	font-weight: 700;
@@ -359,5 +372,93 @@ h5 {
 	color: #ffffff;
 	margin: 0 auto;
 	padding-top: 5px;
+}
+
+@media only screen and (max-width: 1048px) {
+	.button--starred-ideas,
+	.button--new-quality {
+		font-size: 17px;
+	}
+
+	.p--quality {
+		font-size: 14px;
+	}
+}
+
+@media only screen and (max-width: 770px) {
+	body {
+		display: unset;
+		dipslay: flex;
+		flex-flow: column wrap;
+		min-width: 320px;
+	}
+
+	section {
+		min-width: 320px;
+	}
+
+	.close-hamburger {
+	display: inline-block;
+	height: 31px;
+  position: absolute;
+  left: 10px;
+  top: 15px;
+}
+
+	aside {
+		display: none;
+		z-index: 1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		transition: all 1s ease;
+		width: 100%;
+	}
+
+	.hamburger {
+		display: block;
+		background-color: #1F1F3D;
+		color: #fff;
+	}
+
+	.hamburger-icon {
+		height: 50px;
+    width: 50px;
+    position: absolute;
+    left: 10px;
+    top: 7px;
+	}
+
+	h1 {
+		display: flex;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 20px;
+	}
+
+	form { 
+		width: 95%;
+	}
+
+	input,
+	button {
+		height: 52px;
+	}
+
+	.label--new-quality,
+	label,
+	h2 {
+		font-size: 17px;
+	}
+
+	main {
+		margin-bottom: 0px;
+	}
+
+	.section--display-ideas {
+		display: flex;
+		flex-direction: column;
+	}
 }
 
