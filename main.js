@@ -37,6 +37,7 @@ function filterHandler (event) {
 function filterByFavorite(event) {
   var currentFavorite = document.querySelectorAll('.img--star-icon');
   if (event.target.innerText === 'Show Starred Ideas') {
+    handleNoStarredIdeas(ideas);
     for (var i = currentFavorite.length - 1; i >= 0; i--) {
       changeText(event.target, 'View All Ideas');
       var card = currentFavorite[i].parentNode.parentNode;
@@ -47,8 +48,54 @@ function filterByFavorite(event) {
       }
     }
   } else { 
+    removeNoStarsMessage();
     showAll(event);
     changeText(event.target, 'Show Starred Ideas');
+  }
+}
+
+function handleNoStarredIdeas(ideas) {
+
+  if(checkForStars(ideas)) {
+    removeNoStarsMessage();
+  } else {
+    displayNoStarsMessage();
+  }
+
+}
+
+function displayNoStarsMessage() {
+  cardHolder.insertAdjacentHTML('afterbegin',
+    `<p id="no-stars-message">There are no starred ideas to display!</p>
+    <img id="lightbulb-img" src="images/lightbulb-idea.svg" alt="lightbulb image">
+    `);
+}
+
+function removeNoStarsMessage() {
+  var noStarsMessage = document.getElementById('no-stars-message');
+  var lightbulbImg = document.getElementById('lightbulb-img');
+
+  if(noStarsMessage !== null && lightbulbImg !== null) {
+    noStarsMessage.remove();
+    lightbulbImg.remove();
+  }
+
+}
+
+function checkForStars(ideas) {
+  var starredCount = 0;
+
+  for(var i = 0; i < ideas.length; i++) {
+    
+    if(ideas[i].star === true) {
+      starredCount++;
+    }
+  }
+
+  if(starredCount === 0) {
+    return false;
+  } else {
+    return true;
   }
 }
 
@@ -305,4 +352,12 @@ function disableButton(button) {
 
 function clearFields(fields) {
   fields.forEach(element => element.value = "");
+}
+
+function chronologicalSort(a,b) {
+  if(a < b) {
+    return -1;
+  } else {
+    return 1;
+  }
 }
