@@ -305,9 +305,27 @@ function displayModal(event) {
 
 function hideModal(event) {
 	if (event.target.id === 'edit-box' || event.key === 'Enter') {
-		modal.style.display = 'none';
+    modal.style.display = 'none';
     newValues();
     location.reload();
+  }
+  console.log('bottom')
+  openHamburger(event);
+  hamburgerExit(event);
+}
+
+function openHamburger(event) {
+  if(event.target.classList.contains('hamburger-icon')) {
+    aside.style.display = 'flex';
+    modal.style.display = 'block';
+
+  }
+}
+
+function hamburgerExit() {
+  if (event.target.classList.contains('close-hamburger')) {
+    aside.style.display = 'none';
+    modal.style.display = 'none';
   }
 }
 
