@@ -169,6 +169,7 @@ function instantiatePersistedIdeas() {
 
 function rebuildPersistedIdeas() {
   if (ideas !== null) {
+    ideas.sort(chronologicalSort);
     ideas.forEach(element => buildCard(element));
   }
 }
@@ -355,7 +356,7 @@ function clearFields(fields) {
 }
 
 function chronologicalSort(a,b) {
-  if(a < b) {
+  if(a.id < b.id) {
     return -1;
   } else {
     return 1;
