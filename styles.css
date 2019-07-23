@@ -331,13 +331,7 @@ h5 {
 }
 
 @media only screen and (min-width: 770px) {
-	aside {
-		display: flex;
-	}
 	.hamburger {
-		display: none;
-	}
-	.div--modal {
 		display: none;
 	}
 }
