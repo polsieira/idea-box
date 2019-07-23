@@ -29,7 +29,7 @@ Of course IdeaBox helped solidify the concepts of HTML5 and CSS3, however the tr
 
 <img src="https://github.com/posi7790/idea-box/blob/master/images/desktop-actual.png" alt="Website screenshot on desktop">
 <img src="https://github.com/posi7790/idea-box/blob/master/images/mobile-actual.png" alt="Website on mobile">
-<img src="" alt="Website on mobile with menu open">
+<img src="https://github.com/posi7790/idea-box/blob/master/images/hamburger-menu.png" alt="Website on mobile with menu open">
 
 
 ## Features
@@ -61,7 +61,7 @@ Of course IdeaBox helped solidify the concepts of HTML5 and CSS3, however the tr
 
 ## Setup
 
-View <a href="https://posi7790.github.io/idea-box/">here</a> on my GitHub.
+View <a href="https://posi7790.github.io/idea-box/">here</a> on GitHub pages.
 
 OR 
 
