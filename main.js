@@ -11,7 +11,7 @@ const aside = document.querySelector('aside');
 const cardHolder = document.querySelector('.section--display-ideas');
 const editModal = document.querySelector('.div--modal-popup');
 const modal = document.querySelector('.div--modal');
-
+const counter = document.querySelector('#character-count');
 // Event Listeners
 window.addEventListener('load', repopulateCards);
 window.addEventListener('click', hideModal);
@@ -193,7 +193,15 @@ function createIdeaHandler(event) {
   if (event.target.classList.contains('input--search-ideas')) {
   	searchCards(event);
   }
+  characterCounter(event);
 }  
+
+function characterCounter(event) {
+  if(event.target.classList.contains('textarea--body')){
+  var currentInput = event.target.value.length;
+  document.querySelector('.character-count').innerText = `${currentInput} out of 120 characters`;
+  };
+};
 
 function searchCards(event) {
 	var searchInput = event.target.value;
@@ -309,7 +317,6 @@ function hideModal(event) {
     newValues();
     location.reload();
   }
-  console.log('bottom')
   openHamburger(event);
   hamburgerExit(event);
 }
