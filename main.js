@@ -1,6 +1,6 @@
 
 // Global variables
-var qualities = ['Swill','Plausible','Genius'];
+var qualities = [];
 var ideas = [];
 var idea;
 const titleInput = document.querySelector('.input--title');
@@ -51,6 +51,7 @@ function chronologicalSort(a,b) {
 
 function repopulateCards(event) {
   instantiatePersistedIdeas();
+  rebuildQualities();  
   rebuildPersistedIdeas();
   toggleNoIdeasDisplay();
 }
@@ -94,6 +95,16 @@ function removeNoIdeasDisplay() {
   } else {
     noIdeas.remove();
     lightbulbImg.remove();
+  }
+}
+
+function rebuildQualities() {
+  qualities = JSON.parse(localStorage.getItem('qualitiesArray'));
+  if (qualities === null) {
+    qualities = ['Swill','Plausible','Genius'];
+  }
+  for (i = 3; i < qualities.length; i++) {
+    addQualityToDom(qualities[i])
   }
 }
 
@@ -348,14 +359,25 @@ function showAll(event) {
 function addQuality(event) {
   event.preventDefault();
   var newQuality = qualityInput.value;
-  var card = event.target.parentNode.parentNode;
-  var ideaIndex = locateIdea(card);
-  var dataCounter = 2;
-  if (event.target.classList.contains('button--new-quality')) {
-    dataCounter++;
-    showAllQualities.insertAdjacentHTML('beforebegin', `
-      <li class="li--qualities li${dataCounter + 1}" data-index="${dataCounter}">${newQuality}</li>`)
+  if (checkFields([qualityInput])) {
+    qualities.push(newQuality);
+    saveQualities();  
+    if (event.target.classList.contains('button--new-quality')) {
+      addQualityToDom(newQuality)
+    }
   }
+  clearFields([qualityInput]);
+}
+
+function addQualityToDom(newQuality) {
+  var card = document.querySelector('.show-all');
+  var dataCounter = qualities.length - 1;
+  card.insertAdjacentHTML('beforebegin', `
+  <li class="li--qualities li${dataCounter + 1}" data-index="${dataCounter}">${newQuality}</li>`)
+}
+
+function saveQualities() {
+  localStorage.setItem('qualitiesArray', JSON.stringify(qualities))
 }
 
 function changeText(element, text) {
