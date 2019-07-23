@@ -104,7 +104,7 @@ function rebuildQualities() {
     qualities = ['Swill','Plausible','Genius'];
   }
   for (i = 3; i < qualities.length; i++) {
-    addQualityToDom(qualities[i])
+    addQualityToDom(qualities[i]);
   }
 }
 
@@ -347,7 +347,7 @@ function filterByFavorite(event) {
 
 function showAll(event) {
   if (event.target.classList.contains('show-all') || event.target.classList.contains('button--starred-ideas')) {
-  var currentQualities = document.querySelectorAll(".p--quality");
+  var currentQualities = document.querySelectorAll('.p--quality');
     for (var i = currentQualities.length - 1; i >= 0; i--) {
       var card = currentQualities[i].parentNode.parentNode;
       card.style.display = 'flex';
@@ -359,12 +359,10 @@ function showAll(event) {
 function addQuality(event) {
   event.preventDefault();
   var newQuality = qualityInput.value;
-  if (checkFields([qualityInput])) {
+  if (checkFields([qualityInput]) && event.target.classList.contains('button--new-quality')) {
     qualities.push(newQuality);
     saveQualities();  
-    if (event.target.classList.contains('button--new-quality')) {
-      addQualityToDom(newQuality)
-    }
+    addQualityToDom(newQuality);
   }
   clearFields([qualityInput]);
 }
@@ -427,7 +425,7 @@ function removeNoStarsMessage() {
 
 function filterByQuality(event) {
   var qualityIndex = qualities.indexOf(event.target.innerText);
-  var currentQualities = document.querySelectorAll(".p--quality");
+  var currentQualities = document.querySelectorAll('.p--quality');
   for (var i = currentQualities.length - 1; i >= 0; i--) {
     var card = currentQualities[i].parentNode.parentNode;
     if (currentQualities[i].dataset.quality == qualityIndex) {
