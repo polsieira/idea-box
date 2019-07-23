@@ -204,6 +204,9 @@ function characterCounter(event) {
   var currentInput = event.target.value.length;
   document.querySelector('.character-count').innerText = `${currentInput} out of 120 characters`;
   };
+  if(bodyInput.value === '') {
+    document.querySelector('.character-count').innerText = '';
+  };
 };
 
 function searchCards(event) {
