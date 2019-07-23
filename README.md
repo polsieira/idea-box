@@ -1,7 +1,7 @@
 # IdeaBox
 
 ## Table of contents
-* [General Info](#General Info)
+* [General Info](#General-Info)
 * [Motivation](#Motivation)
 * [Built With](#Built-With) 
 * [Screenshots](#Screenshots)
