@@ -292,7 +292,7 @@ function editCard(event) {
         <label for="idea-edit-title">Title</label><br>
           <input class="updated-title" type="text" name="idea-edit-title" value="${idea.title}"><br>
         <label for="idea-edit-body">Body</label><br>  
-          <textarea class="textarea textarea--edit" name="idea-edit-body">${idea.body}</textarea>
+          <textarea maxlength="120" class="textarea textarea--body textarea--edit" name="idea-edit-body">${idea.body}</textarea>
       </article>
       <article class="article article--idea-footer">
         <h5>Hit "Return" To Submit Your Changes"</h5>
