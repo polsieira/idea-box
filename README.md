@@ -1,25 +1,21 @@
 # IdeaBox
 
 ## Table of contents
-* [General Info](#Lynne's-Dog-Party)
+* [General Info](#General Info)
 * [Motivation](#Motivation)
 * [Built With](#Built-With) 
 * [Screenshots](#Screenshots)
 * [How to Use](#How-to-Use)
-* [Tests](#Tests)
 * [Setup](#Setup)
 * [License](#License)
 
 ## General Info
 
-<img height="200px" width="200px" src="images/dog-icon.svg" alt="Dog Party Logo">
-
-<h4>A project for practicing HTML, CSS, and a touch of JS for Turing's Front-End Engineering course, Module 1.</h4>
+<h4>A project for practicing HTML, CSS, and diving deeper into JavaScript in Turing Front-End Engineering course, Module 1. Completed in group of three using GitHub as remote repository.</h4>
 
 
 ## Motivation
-
-Dog Party is a project I was assigned as a new student at Turing.  We were given a static comp with limited styling details (e.g. a few color hex codes) to reproduce from scratch in code.  This was primarily working with HTML and CSS, and we also had a chance to experiment with form functionality using JavaScript and CSS media queries for making the design responsive.  See the comp <a href="http://frontend.turing.io/assets/images/dog-party-js-edition.jpg">here</a>.
+Of course IdeaBox helped solidify the concepts of HTML5 and CSS3, however the true test was with the functionality in JavaScript. The project was introduced in two parts to emphasize the importance of writing clean, DRY, dynamic code. The functionality stresses the importance of saving data to local storage and pulling information back to the webpage on reload to ensure that elements persist. Also, IdeaBox implemented event bubbling to manipulate elements on the DOM to create a more interactive experience for the user. See the part one of the comp <a href="https://frontend.turing.io/projects/ideabox-redux-wk1.html">here</a> and part two <a href="https://frontend.turing.io/projects/ideabox-redux-wk2.html">here</a>.
 
 
 ## Built With
@@ -31,35 +27,45 @@ Dog Party is a project I was assigned as a new student at Turing.  We were given
 
 ## Screenshots
 
-<img src="https://github.com/lynnerang/dog-party-website/blob/master/screenshots/Desktop.png" alt="Website screenshot on desktop">
-<img src="https://github.com/lynnerang/dog-party-website/blob/master/screenshots/Mobile1.png" alt="Top of website on mobile">
-<img src="https://github.com/lynnerang/dog-party-website/blob/master/screenshots/Mobile2.png" alt="Website columns on mobile">
+<img src="https://github.com/posi7790/idea-box/blob/master/images/desktop-actual.png" alt="Website screenshot on desktop">
+<img src="https://github.com/posi7790/idea-box/blob/master/images/mobile-actual.png" alt="Website on mobile">
+<img src="" alt="Website on mobile with menu open">
 
 
 ## Features
 
-- [x] Altering page content via input field (JS)
-- [x] Responsive (CSS Media Query for navigation and page columns)
-- [x] Pictures of adorable doggos
-- [x] One-page design
-- [ ] Pictures of adorable kitties
-- [ ] Link destinations
+- [x] Add/delete ideas
+- [x] Editing and starring ideas
+- [x] Pop up modal for editing
+- [x] Changing quality of idea
+- [x] Filter/search by text
+- [x] Filter by importance
+- [x] View starred ideas
+- [ ] View recent ideas
+- [x] Add new qualities
+- [ ] Remove new qualities
+- [x] Character counter with button disabled for more than 120 characters
+
 
 
 ## How to Use
 
-1. Try naming the doggo by entering what name you'd like into the input at the top and pressing the "Name your dog" button!
+1. Create a new idea by giving it a title and body. The body can only be 120 characters. Then press save to create new cards.
 
-2. See how the page responds to different screen sizes by viewing on mobile or resizing your browser window to less than 680px wide!
+2. New cards can be favorited by hitting the star or deleted by hitting the x. Also, individual ideas have a quality of idea that can be changed to organize your best ideas! To edit your idea click on the title or body to make your idea better!
+
+3. Filter ideas by favorite by using the Show Starred Ideas button or filter by quality by clicking the quality on the side bar. Show all by clicking the View All Ideas or Show All on the left sidebar.
+
+4. Can't find your idea? Try searching through your ideas by typing key words into the search bar.
 
 
 ## Setup
 
-View <a href="https://github.com/lynnerang/dog-party-website">here</a> on my GitHub.
+View <a href="https://posi7790.github.io/idea-box/">here</a> on my GitHub.
 
 OR 
 
-Download and unzip the dog-party-website.zip file, and open the index.html file to view the website.
+Download and unzip the idea-box.zip file, and open the index.html file to view the website.
 
 
 ## License
