@@ -5,12 +5,14 @@ var ideas = [];
 var idea;
 const titleInput = document.querySelector('.input--title');
 const bodyInput = document.querySelector('.textarea--body');
+const qualityInput = document.querySelector('.input--new-quality');
 const saveButton = document.querySelector('.button--save-idea')
 const main = document.querySelector('main');
 const aside = document.querySelector('aside');
 const cardHolder = document.querySelector('.section--display-ideas');
 const editModal = document.querySelector('.div--modal-popup');
 const modal = document.querySelector('.div--modal');
+const showAllQualities = document.querySelector('.show-all')
 
 // Event Listeners
 window.addEventListener('load', repopulateCards);
@@ -32,6 +34,7 @@ function filterHandler (event) {
     filterByQuality(event); 
     showAll(event);
   }
+  addQuality(event);
 }
 
 function filterByFavorite(event) {
@@ -193,7 +196,18 @@ function createIdeaHandler(event) {
   if (event.target.classList.contains('input--search-ideas')) {
   	searchCards(event);
   }
+  characterCounter(event);
 }  
+
+function characterCounter(event) {
+  if(event.target.classList.contains('textarea--body')){
+  var currentInput = event.target.value.length;
+  document.querySelector('.character-count').innerText = `${currentInput} out of 120 characters`;
+  };
+  if(bodyInput.value === '') {
+    document.querySelector('.character-count').innerText = '';
+  };
+};
 
 function searchCards(event) {
 	var searchInput = event.target.value;
@@ -309,7 +323,6 @@ function hideModal(event) {
     newValues();
     location.reload();
   }
-  console.log('bottom')
   openHamburger(event);
   hamburgerExit(event);
 }
@@ -357,9 +370,24 @@ function changeQualityData(event, ideaIndex) {
   event.target.parentNode.children[1].dataset.quality = ideaIndex.quality;
 }
 
+function addQuality(event) {
+  event.preventDefault();
+  var newQuality = qualityInput.value;
+  var card = event.target.parentNode.parentNode;
+  var ideaIndex = locateIdea(card);
+  var dataCounter = 2;
+  if(event.target.classList.contains('button--new-quality')) {
+    dataCounter++;
+    console.log(showAllQualities)
+    showAllQualities.insertAdjacentHTML('beforebegin', `
+      <li class="li--qualities li${dataCounter + 1}" data-index="${dataCounter}">${newQuality}</li>`)
+  }
+  // clearFields(qualityInput);
+}
+
 function checkFields(fields) {
   for (i = 0; i < fields.length; i++) {
-    if (fields[i].value === '') {
+    if (fields[i].value === '' || bodyInput.value.length > 120) {
       return false;
     }
   }
