@@ -17,6 +17,7 @@ const showAllQualities = document.querySelector('.show-all')
 // Event Listeners
 window.addEventListener('load', repopulateCards);
 window.addEventListener('click', hideModal);
+window.addEventListener('resize', displayAside)
 document.addEventListener('keypress', hideModal);
 main.addEventListener('keyup', createIdeaHandler);
 main.addEventListener('click', createIdeaHandler);
@@ -411,5 +412,13 @@ function chronologicalSort(a,b) {
     return -1;
   } else {
     return 1;
+  }
+}
+
+function displayAside(event) {  
+  if (window.innerWidth > 770) {
+    console.log('fire')
+    aside.style.display = 'flex';
+    modal.style.display = 'none';
   }
 }
