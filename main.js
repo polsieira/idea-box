@@ -11,7 +11,7 @@ const aside = document.querySelector('aside');
 const cardHolder = document.querySelector('.section--display-ideas');
 const editModal = document.querySelector('.div--modal-popup');
 const modal = document.querySelector('.div--modal');
-const counter = document.querySelector('#character-count');
+
 // Event Listeners
 window.addEventListener('load', repopulateCards);
 window.addEventListener('click', hideModal);
@@ -365,8 +365,9 @@ function changeQualityData(event, ideaIndex) {
 }
 
 function checkFields(fields) {
+  console.log(bodyInput.value.length);
   for (i = 0; i < fields.length; i++) {
-    if (fields[i].value === '') {
+    if (fields[i].value === '' || bodyInput.value.length > 120) {
       return false;
     }
   }
