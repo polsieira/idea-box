@@ -358,6 +358,10 @@ main input {
   width: 60%;
 }
 
+.button--show-more-less {
+  display: inline-block;
+}
+
 @keyframes modal-animation {
   from {opacity: 0.2;}
   to {opacity: 1;}
