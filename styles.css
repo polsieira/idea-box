@@ -228,7 +228,7 @@ main input {
   background: #eaeaf4;
   display: grid;
   grid-template-columns: repeat(3, 33%);
-  grid-template-rows: repeat(10, 50%);  
+  grid-template-rows: repeat(20, 50%);  
   flex-wrap: wrap;
   grid-area: section;
   justify-content: space-around;
@@ -309,7 +309,7 @@ main input {
 }
 
 .button--show-more-less {
-  display: inline-block;
+  /*display: inline-block;*/
 }
 
 @keyframes modal-animation {
