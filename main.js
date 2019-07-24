@@ -152,7 +152,7 @@ function rebuildQualities() {
     qualities = ['Swill','Plausible','Genius'];
   }
   for (i = 3; i < qualities.length; i++) {
-    addQualityToDom(qualities[i])
+    addQualityToDom(qualities[i]);
   }
 }
 
@@ -353,7 +353,7 @@ function editCard(event) {
         <label for="idea-edit-title">Title</label><br>
           <input class="updated-title" type="text" name="idea-edit-title" value="${idea.title}"><br>
         <label for="idea-edit-body">Body</label><br>  
-          <textarea class="textarea textarea--edit" name="idea-edit-body">${idea.body}</textarea>
+          <textarea maxlength="120" class="textarea textarea--edit" name="idea-edit-body">${idea.body}</textarea>
       </article>
       <article class="article article--idea-footer">
         <h5>Hit "Return" To Submit Your Changes"</h5>
@@ -397,7 +397,7 @@ function filterByFavorite(event) {
 
 function showAll(event) {
   if (event.target.classList.contains('show-all') || event.target.classList.contains('button--starred-ideas')) {
-  var currentQualities = document.querySelectorAll(".p--quality");
+  var currentQualities = document.querySelectorAll('.p--quality');
     for (var i = currentQualities.length - 1; i >= 0; i--) {
       var card = currentQualities[i].parentNode.parentNode;
       card.style.display = 'flex';
@@ -409,12 +409,10 @@ function showAll(event) {
 function addQuality(event) {
   event.preventDefault();
   var newQuality = qualityInput.value;
-  if (checkFields([qualityInput])) {
+  if (checkFields([qualityInput]) && event.target.classList.contains('button--new-quality')) {
     qualities.push(newQuality);
     saveQualities();  
-    if (event.target.classList.contains('button--new-quality')) {
-      addQualityToDom(newQuality)
-    }
+    addQualityToDom(newQuality);
   }
   clearFields([qualityInput]);
 }
@@ -477,7 +475,7 @@ function removeNoStarsMessage() {
 
 function filterByQuality(event) {
   var qualityIndex = qualities.indexOf(event.target.innerText);
-  var currentQualities = document.querySelectorAll(".p--quality");
+  var currentQualities = document.querySelectorAll('.p--quality');
   for (var i = currentQualities.length - 1; i >= 0; i--) {
     var card = currentQualities[i].parentNode.parentNode;
     if (currentQualities[i].dataset.quality == qualityIndex) {

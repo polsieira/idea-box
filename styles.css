@@ -3,6 +3,7 @@
 *:after {
   box-sizing: border-box;
 }
+
 body {
   align-items: stretch;
   display: grid;
@@ -18,6 +19,7 @@ body {
     "aside aside section section section section";
   margin: 0px;
 }
+
 aside {
   align-items: center;
   background: #1f1f3d;
@@ -28,9 +30,11 @@ aside {
   margin: 0px;
   min-height: 100%;
 }
+
 .hamburger {
   display: none;
 }
+
 .close-hamburger {
 	display: none;
 	height: 50px;
@@ -39,12 +43,14 @@ aside {
   left: 10px;
   top: 7px;
 }
+
 h1 {
   font-size: 19px;
   font-weight: 700;
   margin: 15px auto 15px auto;
   width: 90%;
 }
+
 h2 {
   color: #BFBFDD;
   font-size: 14px;
@@ -52,13 +58,15 @@ h2 {
   margin: 30px auto 20px auto;
   width: 90%;
 }
+
 img {
   width:25px;
   height: 25px;
 }
+
 button {
   background: #5356a4;
-  border: none;
+  border: 0;
   color: #ffffff;
   font-size: 23px;
   font-weight: 400;
@@ -66,22 +74,27 @@ button {
   height: 2em;
   width: 100%;
 }
+
 button:hover,
 img:hover {
   cursor: pointer;
   transform: scale(1.02);
 }
+
 button:disabled {
   opacity: 0.35;
   transform: scale(1);
 }
+
 .button--new-quality,
 .button--starred-ideas {
   width: 90%;
 }
+
 .button--new-quality {
   margin-top: -5px;
 }
+
 button,
 input,
 label {
@@ -89,15 +102,18 @@ label {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
 }
+
 label {
   font-size: 15px;
   font-weight: 700;
 }
+
 input {
   border: 1px solid #1F1F3D;
   font-size: 14px;
   padding: 3px 5px 3px 5px;
 }
+
 textarea {
   border: 1px solid #1F1F3D;
   font-size: 14px;
@@ -107,28 +123,34 @@ textarea {
   resize: none;
   width: 100%;
 }
+
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
 li {
   font-size: 17px;
   padding: 3% 0% 3% 5%;
   width: 100%;
 }
+
 .li--qualities:hover{
   background-color: #D14119;
   border-left: 8px solid #f58e72;
 }
+
 .show-all {
   font-size: 14px;
   padding-right: 10px;
   text-align: right;
 }
+
 .form--search-idea {
   display: flex;
 }
+
 .div--search-ideas {
   align-items: center;
   background-color: #1f1f3d;
@@ -140,11 +162,13 @@ li {
   margin: auto;
   width: 45px;
 }
+
 .input--search-ideas {
   border-bottom-left-radius: 0px; 
   border-top-left-radius: 0px;
   height: 45px;
 }
+
 .section--main-title,
 .section--filter-starred,
 .section--quality-filter,
@@ -154,15 +178,18 @@ li {
   flex-direction: column;
   width: 100%;
 }
+
 .section--quality-filter {
   border: unset;
 }
+
 .form--new-quality {
   align-items: center;
   display: flex;
   flex-direction: column;
   width: 100%;
 }
+
 .label--new-quality {
   color: #BFBFDD;
   font-size: 14px;
@@ -170,12 +197,14 @@ li {
   margin-top: 24px;
   width: 90%;
 }
+
 .input--new-quality {
   background-color: #BFBFDD;
   margin-top: -15px;
   min-height: 3em;
   width: 90%;
 }
+
 main {
   align-items: center;
   background: #a9aad2;
@@ -190,40 +219,49 @@ main {
   min-width: 75%;
   padding: 20px;
 }
+
 form {
   width: 50%;
 }
+
 main input {
   margin: 2% 0;
   min-height: 3em;
   width: 100%;
 }
+
 .img--star-icon:hover,
 .img--delete-icon:hover,
 .img--upvote:hover,
 .img--downvote:hover {
   transform: scale(1.2);  
 }
+
 .img-search:hover {
   cursor: inherit;
   transform: none;
 }
+
 .input--title {
   margin-bottom: 22px;
   margin-top: 3px;
 }
+
 .input--body {
   margin-top: 5px;
   min-height: 7em;
 }
+
 .button--save-idea {
   background: #1f1f3d;
   margin-bottom: 0px;
   min-width: 100%;
 }
+
 .input--search-ideas {
   display: block;
 }
+
 .section--display-ideas {
   background: #eaeaf4;
   display: grid;
@@ -235,6 +273,7 @@ main input {
   margin-left: 0;
   overflow: scroll;
 }
+
 .section--idea-card {
   border: solid #6E646B 2px;
   font-size: 1.25em;
@@ -243,27 +282,33 @@ main input {
   justify-content: space-between;
   margin: 10px 10px;
 }
+
 .section--idea-card:hover {
   box-shadow: 10px 10px 8px #888888;
 }
+
 .article--idea-header {
   background-color: #1f1f3d;
   display:flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 .article--idea-content {
   color: #1F1F3D;
   height: 100%;
   overflow: scroll;
   padding: 10px;
 }
+
 .h3--idea-header {
   margin: 5px 0;
 }
+
 .p--quality {
   font-size: 17px;
 }
+
 .article--idea-footer {
   align-items: center;
   background-color: #5356A4;
@@ -273,6 +318,7 @@ main input {
   justify-content: space-between;
   height: 30px;
 }
+
 #no-stars-message,
 #section--no-ideas {
   align-self: center;
@@ -281,15 +327,18 @@ main input {
   font-size: 2em;
   font-weight: 700;
 }
+
 #lightbulb-img {
   width: 200px;
   height: 200px;
   grid-column-start: 2;
   justify-self: center;
 }
+
 #lightbulb-img:hover {
   cursor: default;
 }
+
 .div--modal {
   background: rgba(0, 0, 0, 0.5);
   display: none;  
@@ -299,6 +348,7 @@ main input {
   top: 0;
   width: 100%;
 }
+
 .div--modal-popup {
   animation-name: modal-animation;
   animation-duration: 1s;
@@ -316,30 +366,36 @@ main input {
   from {opacity: 0.2;}
   to {opacity: 1;}
 }
+
 .section--edit {
   background: #a9aad2;
   padding: 0;
 }
+
 h5 {
   color: #ffffff;
   margin: 0 auto;
   padding-top: 5px;
 }
+
 @media only screen and (max-width: 1048px) {
 	.button--starred-ideas,
 	.button--new-quality {
 		font-size: 17px;
 	}
+
 	.p--quality {
 		font-size: 14px;
 	}
 }
+
 
 @media only screen and (min-width: 770px) {
 	.hamburger {
 		display: none;
 	}
 }
+
 
 @media only screen and (max-width: 770px) {
 	body {
@@ -348,9 +404,11 @@ h5 {
 		flex-flow: column wrap;
 		min-width: 320px;
 	}
+
 	section {
 		min-width: 320px;
 	}
+
 	.close-hamburger {
 		display: inline-block;
 		height: 31px;
@@ -358,6 +416,7 @@ h5 {
   	position: absolute;
   	top: 15px;
 	}
+
 	aside {
 		display: none;
 		left: 0;
@@ -367,11 +426,13 @@ h5 {
 		width: 100%;
 		z-index: 1;
 	}
+
 	.hamburger {
 		background-color: #1F1F3D;
 		color: #fff;
 		display: block;
 	}
+
 	.hamburger-icon {
 		height: 50px;
     left: 10px;
@@ -379,6 +440,8 @@ h5 {
     top: 7px;
     width: 50px;   
   }
+
+
   aside {
     animation-name: hamburger-animation;
     animation-duration: 2s;
@@ -389,16 +452,20 @@ h5 {
     left: 0;
     width: 100%;
   }
+
+
   @keyframes hamburger-animation{
     from {
       left: 0;
       top: -675px;
     }
+
     to {
       left: 0;
       top: 0;
     }
   }
+
 	h1 {
 		display: flex;
     justify-content: center;
@@ -406,24 +473,30 @@ h5 {
     padding: 20px;
     text-align: center;
 	}
+
 	form { 
 		width: 95%;
 	}
+
 	input,
 	button {
 		height: 52px;
 	}
+
 	.label--new-quality,
 	label,
 	h2 {
 		font-size: 17px;
 	}
+
 	main {
 		margin-bottom: 0px;
 	}
+
 	.section--display-ideas {
 		display: flex;
 		flex-direction: column;
 	}
 }
+
 
