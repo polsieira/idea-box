@@ -307,6 +307,11 @@ main input {
   margin: 14% auto;
   width: 60%;
 }
+
+.button--show-more-less {
+  display: inline-block;
+}
+
 @keyframes modal-animation {
   from {opacity: 0.2;}
   to {opacity: 1;}

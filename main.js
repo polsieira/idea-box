@@ -53,7 +53,42 @@ function repopulateCards(event) {
   instantiatePersistedIdeas();
   rebuildQualities();  
   rebuildPersistedIdeas();
+  showFirstTenIdeas();
   toggleNoIdeasDisplay();
+}
+
+function determineShowBtn() {
+  var nodeList = document.querySelectorAll('.section--idea-card');
+  var loadedIdeas = Array.from(nodeList);
+  var determineBtn = loadedIdeas.filter(idea => idea.style.display !== 'none');
+  var showBtn = document.querySelector('.button--show-more-less');
+  if(determineBtn.length === 10) {
+    changeText(showBtn, 'Show More');
+  } else if (determineBtn.length > 10) {
+    changeText(showBtn, 'Show Less');
+  } else {
+    showBtn.style.display = 'none';
+  }
+}
+
+function numberToDisplay(event) {
+  event.preventDefault();
+  if (event.target.innerText === 'Show More') {
+    showAllIdeas();
+  } else if (event.target.innerText === 'Show Less') {
+    showFirstTenIdeas();
+  }
+}
+
+function showAllIdeas() {
+  var nodeList = document.querySelectorAll('.section--idea-card');
+  var loadedIdeas = Array.from(nodeList);
+  if (ideas !== null) {
+    ideas.sort(chronologicalSort);
+    console.log(loadedIdeas)
+    loadedIdeas.forEach(element => element.style.display = 'flex');
+  }
+  determineShowBtn();
 }
 
 function instantiatePersistedIdeas() {
@@ -63,9 +98,22 @@ function instantiatePersistedIdeas() {
   }  
 }
 
+function showFirstTenIdeas() {
+  var nodeList = document.querySelectorAll('.section--idea-card');
+  var loadedIdeas = Array.from(nodeList);
+  if (ideas !== null) {
+    ideas.sort(chronologicalSort);
+    var notFirstTen = loadedIdeas.slice(9, loadedIdeas.length -1);
+    console.log(loadedIdeas)
+    notFirstTen.forEach(element => element.style.display = 'none');
+  }
+  determineShowBtn();
+}
+
 function rebuildPersistedIdeas() {
   if (ideas !== null) {
     ideas.sort(chronologicalSort);
+    var theRest = ideasTemp.slice(9);
     ideas.forEach(element => buildCard(element));
   }
 }
@@ -116,6 +164,7 @@ function hideModal(event) {
   }
   openHamburger(event);
   hamburgerExit(event);
+  determineShowBtn(event);
 }
 
 function newValues() {
@@ -287,6 +336,7 @@ function displayModal(event) {
     modal.style.display = 'block';
     editCard(event);
   }
+  numberToDisplay(event);
 }
 
 function editCard(event) {
