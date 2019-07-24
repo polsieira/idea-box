@@ -99,7 +99,8 @@ function removeNoIdeasDisplay() {
 }
 
 function rebuildQualities() {
-  qualities = JSON.parse(localStorage.getItem('qualitiesArray'));
+  var tempQualities = JSON.parse(localStorage.getItem('qualitiesArray'));
+  qualities = Array.from(tempQualities);
   if (qualities === null) {
     qualities = ['Swill','Plausible','Genius'];
   }
@@ -321,6 +322,7 @@ function filterHandler (event) {
     showAll(event);
   }
   addQuality(event);
+  deleteQualityHandler(event);
 }
 
 function filterByFavorite(event) {
@@ -371,11 +373,22 @@ function addQualityToDom(newQuality) {
   var card = document.querySelector('.show-all');
   var dataCounter = qualities.length - 1;
   card.insertAdjacentHTML('beforebegin', `
-  <li class="li--qualities li${dataCounter + 1}" data-index="${dataCounter}">${newQuality}</li>`)
+  <li class="li--qualities li${dataCounter + 1}" data-index="${dataCounter}">${newQuality} <img class= "li--quality-delete-img" src="images/delete.svg" alt="delete quality"></li>`)
 }
 
 function saveQualities() {
   localStorage.setItem('qualitiesArray', JSON.stringify(qualities))
+}
+
+function deleteQualityHandler(event) {
+  event.preventDefault();
+  if(event.target.classList.contains('li--quality-delete-img')) {
+    var quality = event.target.parentNode.firstChild.textContent;
+    var indexOfQuality = qualities.indexOf(quality.trim());
+    qualities.splice(indexOfQuality,1);
+    saveQualities();
+    event.target.parentNode.remove();
+  }
 }
 
 function changeText(element, text) {
