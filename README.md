@@ -41,9 +41,9 @@ Of course IdeaBox helped solidify the concepts of HTML5 and CSS3, however the tr
 - [x] Filter/search by text
 - [x] Filter by importance
 - [x] View starred ideas
-- [ ] View recent ideas
+- [x] View recent ideas
 - [x] Add new qualities
-- [ ] Remove new qualities
+- [x] Remove new qualities
 - [x] Character counter with button disabled for more than 120 characters
 
 
