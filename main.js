@@ -62,7 +62,6 @@ function determineShowBtn() {
   var loadedIdeas = Array.from(nodeList);
   var determineBtn = loadedIdeas.filter(idea => idea.style.display !== 'none');
   var showBtn = document.querySelector('.button--show-more-less');
-  console.log(determineBtn)
   if(determineBtn.length === 10 && loadedIdeas.length > 10 ) {
     changeText(showBtn, 'Show More');
     showBtn.style.display = 'flex';
@@ -88,7 +87,6 @@ function showAllIdeas() {
   var loadedIdeas = Array.from(nodeList);
   if (ideas !== null) {
     ideas.sort(chronologicalSort);
-    console.log(loadedIdeas)
     loadedIdeas.forEach(element => element.style.display = 'flex');
   }
   determineShowBtn();
@@ -107,7 +105,6 @@ function showFirstTenIdeas() {
   if (ideas !== null) {
     ideas.sort(chronologicalSort);
     var notFirstTen = loadedIdeas.slice(9, loadedIdeas.length -1);
-    console.log(loadedIdeas)
     notFirstTen.forEach(element => element.style.display = 'none');
   }
   determineShowBtn();
