@@ -131,9 +131,15 @@ ul {
 }
 
 li {
+  display: flex;
   font-size: 17px;
+  justify-content: space-between;
   padding: 3% 0% 3% 5%;
   width: 100%;
+}
+
+.li--quality-delete-img {
+  margin-right: 10px;
 }
 
 .li--qualities:hover{
