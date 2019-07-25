@@ -62,10 +62,13 @@ function determineShowBtn() {
   var loadedIdeas = Array.from(nodeList);
   var determineBtn = loadedIdeas.filter(idea => idea.style.display !== 'none');
   var showBtn = document.querySelector('.button--show-more-less');
-  if(determineBtn.length === 10) {
+  console.log(determineBtn)
+  if(determineBtn.length === 10 && loadedIdeas.length > 10 ) {
     changeText(showBtn, 'Show More');
-  } else if (determineBtn.length > 10) {
+    showBtn.style.display = 'flex';
+  } else if (determineBtn.length >= 11) {
     changeText(showBtn, 'Show Less');
+    showBtn.style.display = 'flex';
   } else {
     showBtn.style.display = 'none';
   }
@@ -209,6 +212,7 @@ function createIdeaHandler(event) {
   }
   if (event.target.classList.contains('button--save-idea')) {
     populateNewIdea();
+    determineShowBtn();
     disableButton(saveButton);
   }
   if (event.target.classList.contains('input--search-ideas')) {
