@@ -458,7 +458,7 @@ function checkForStars(ideas) {
   var starredCount = 0;
 
   for (var i = 0; i < ideas.length; i++) {
-    if (ideas[i].star === true) {
+    if (ideas[i].star) {
       starredCount++;
     }
   }
